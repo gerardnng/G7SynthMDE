@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MicrocontrollerModeling:Microcontroller xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MicrocontrollerModeling="http://www.example.org/microcontrollermodeling" family = "Atmel AVR 8-Bit" name="ATMEL ATmega328" manufacturer="Atmel">
+  <pins name="PD0" number="0"/>
+  <pins name="PD1" number="1"/>
+  <pins name="PD2" number="2"/>
+  <pins name="PD3" number="3"/>
+  <pins name="PD4" number="4"/>
+  <pins name="PD5" nature="Mixed" number="5"/>
+  <pins name="PD6" nature="Mixed" number="6"/>
+  <pins name="PD7" nature="Mixed" number="7"/>
+  <pins name="PB0" number="8"/>
+  <pins name="PB1" number="9"/>
+  <pins name="PB2" number="10"/>
+  <pins name="PB3" number="11"/>
+  <pins name="PB4" number="12"/>
+  <pins name="PB5" number="13"/>
+  <pins name="PC0" nature="Analog" number="23"/>
+  <pins name="PC1" nature="Analog" number="24"/>
+  <pins name="PC2" nature="Analog" number="25"/>
+  <pins name="PC3" nature="Analog" number="26"/>
+  <pins name="PC4" nature="Analog" number="27"/>
+  <pins name="PC5" nature="Analog" number="28"/>
+  <clanguage name="Arduino">
+    <libraries name="TimerOne.h"/>
+    <pinoperations digitalReadExp="digitalRead(pin_num) ;" digitalWriteExp="digitalWrite(pin_num, value) ;" analogReadExp="analogRead(pin_num) ;" analogWriteExp="analogWrite(pin_num, value) ;" pinConfigExp="pinMode(pin_num, mode);"/>
+    <timerconfig codeExp="Timer1.initialize(1000000/(1000/TIMER_PERIOD)); Timer1.attachInterrupt(update_timingVars_callback);"/>
+    <pinmode inModeExp="INPUT" outModeExp="OUTPUT"/>
+  </clanguage>
+  <processor unit="Mhz" speed="20"/>
+  <roms xsi:type="MicrocontrollerModeling:EEPROM" unit="Ko" size="1"/>
+  <flash unit="Ko" size="32"/>
+  <ram unit="Ko" size="2"/>
+</MicrocontrollerModeling:Microcontroller>

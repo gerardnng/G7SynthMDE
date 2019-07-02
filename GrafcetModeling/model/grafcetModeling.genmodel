@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/GrafcetModeling/src" modelPluginID="GrafcetModeling"
+    modelName="GrafcetModeling" nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    language="" operationReflection="true" importOrganizing="true">
+  <foreignModel>grafcetModeling.ecore</foreignModel>
+  <genPackages prefix="GrafcetModeling" basePackage="grafcetmodeling.model" disposableProviderFactory="true"
+      ecorePackage="grafcetModeling.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="grafcetModeling.ecore#//LogicOpValues">
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/NOT"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/RE"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/FE"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/EQU"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/LE"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/LT"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/GE"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/GT"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//LogicOpValues/NEQ"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="grafcetModeling.ecore#//TimingType">
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//TimingType/Delayed1"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//TimingType/Limited"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//TimingType/Delayed2"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="grafcetModeling.ecore#//VarType">
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//VarType/Input"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//VarType/Output"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//VarType/Internal"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="grafcetModeling.ecore#//StoredMoment">
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//StoredMoment/Activation"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//StoredMoment/DeActivation"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="grafcetModeling.ecore#//ExprType">
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//ExprType/Logical"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//ExprType/Arithmetic"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="grafcetModeling.ecore#//ArithmOpValues">
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//ArithmOpValues/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//ArithmOpValues/SUB"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//ArithmOpValues/MULT"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//ArithmOpValues/DIV"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//ArithmOpValues/U_MINUS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="grafcetModeling.ecore#//TimeUnit">
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//TimeUnit/ms"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//TimeUnit/s"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//TimeUnit/m"/>
+      <genEnumLiterals ecoreEnumLiteral="grafcetModeling.ecore#//TimeUnit/h"/>
+    </genEnums>
+    <genClasses ecoreClass="grafcetModeling.ecore#//G7Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//G7Element/name"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Grafcet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Grafcet/name"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Grafcet/connections"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Grafcet/transitions"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Grafcet/steps"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Grafcet/variables"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Grafcet/generateG7Elements"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Grafcet/hasTimeConditions"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Grafcet/getTimeExprs"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Step">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Step/isInitial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Step/isActive"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Step/grafcet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Step/inConnections"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Step/outConnections"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Step/actions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Step/variable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Step/inTransitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Step/outTransitions"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Step/createStepActivityVar"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Connection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Connection/grafcet"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Transition">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Transition/transitionCondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Transition/receptivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Transition/grafcet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Transition/inConnections"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Transition/outConnections"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Transition/inSteps"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Transition/outSteps"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Transition/parseReceptivity"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//StepToTransition"/>
+    <genClasses ecoreClass="grafcetModeling.ecore#//TransitionToStep"/>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Action">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Action/actionVariable"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Action/step"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Action/parseExpression"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Action/createActionVariable"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//LevelAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//LevelAction/condition"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//LevelAction/expressionCondition"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//LevelAction/evalCondition"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//StoredAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//StoredAction/moment"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//StoredAction/expressionToEvaluate"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//StoredAction/function"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//StoredAction/storedExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//StoredAction/type"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//StoredAction/evalStoredExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//BooleanVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//BooleanVariable/durationMillis"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//BooleanVariable/valueOld"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//BooleanVariable/valueNew"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Variable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Variable/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Variable/grafcet"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//NumericVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//NumericVariable/value"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Expression">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Expression/subExpr1"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Expression/subExpr2"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Expression/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Expression/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Expression/isSimple"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Expression/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Expression/boolValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Expression/arithmValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference grafcetModeling.ecore#//Expression/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Expression/isConstant"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Expression/eval"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Expression/evalOld"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Expression/getCExpr"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Expression/getOldCExpr"/>
+      <genOperations ecoreOperation="grafcetModeling.ecore#//Expression/getName2"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Operator"/>
+    <genClasses ecoreClass="grafcetModeling.ecore#//TimingOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//TimingOperator/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//TimingOperator/duration1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//TimingOperator/duration2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//TimingOperator/unit1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//TimingOperator/unit2"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Function/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//Function/body"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//LogicalOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//LogicalOperator/name"/>
+    </genClasses>
+    <genClasses ecoreClass="grafcetModeling.ecore#//AritmeticOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute grafcetModeling.ecore#//AritmeticOperator/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

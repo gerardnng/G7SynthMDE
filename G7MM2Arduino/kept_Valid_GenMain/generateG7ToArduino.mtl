@@ -1,0 +1,35 @@
+[comment encoding = UTF-8 /]
+[module generateG7ToArduino('http://www.example.org/grafcetModeling')]
+[import G7MM2Arduino::main::generate_main_structures/]
+[import G7MM2Arduino::main::usefulInformations/]
+
+[template public generateElement(ag7 : Grafcet)]
+[comment @main/]
+[file ((ag7.name + '/' + ag7.name + '.ino').replaceAll(' ','_'), false, 'UTF-8')] 
+//Code generated from the grafcet metamodel instance "[ag7.name/]"
+//Date: [getTime()/]
+[generate_header_and_global_variables(ag7)/]
+//Variable to detect if there is fired transitions
+boolean transitions_fired;
+
+//Program Initialization
+void setup(){
+[generate_initializations(ag7)/]
+}
+
+//Program loop
+void loop(){
+[generate_inputsBoardReading(ag7)/]
+	transitions_fired = false;
+[generate_next_state_calculations(ag7)/]
+[generate_outputs_calculations(ag7)/]
+	if(transitions_fired == false){
+[generate_UpdatingLevelActions_Outputs_variables(ag7)/]
+	}
+[generate_UpdatingStoredActions_Outputs_variables(ag7)/]
+[generate_UpdateOldModel_Variables(ag7)/]
+}
+[generate_other_functions(ag7)/]
+[/file]
+
+[/template]

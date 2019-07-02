@@ -1,0 +1,37 @@
+http://www.eclipse.org/forums/index.php?t=msg&th=123340/Volatile and transient are completely different.
+
+transient
+means that a field does not need to be serialized. It should be used,
+for example, for field which can be calculated dynamically, see the
+example below.
+volatile
+means that a field should have it's value flushed to VM static
+memory after every write. Normally a thread is allowed to keep a
+thread-private copy of any variable data that it uses. This is a
+performance tweak available (but not mandated) to JVM implementors.
+Marking a variable volatile effectively means that they are forbidden
+from applying this optimization to it.
+Volatile has nothing to do with serialization.
+
+An example of transient:
+
+class XYCoord implements Serializable {
+final private int xValue, yValue;
+transient private String stringRepresentation;
+public XYCoord(int x, int y) {
+xValue = x;
+yValue = y;
+}
+public int getXValue() { return xValue; }
+public int getYValue() { return yValue; }
+public String toString() {
+if (stringRepresentation == null)
+stringRepresentation = "XYCoord(" + x + "," + y + ")";
+return stringRepresentation;
+}
+}
+
+Hope this clears things up a bit.
+
+Yours,
+Ian.

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MicrocontrollerModeling:Microcontroller xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:MicrocontrollerModeling="http://www.example.org/microcontrollermodeling" name="Arduino" frequency="1200">
+  <family name="Arduino family" description="Arduino project"/>
+  <pins name="p0"/>
+  <pins name="p1" number="1"/>
+  <pins name="p2" number="2"/>
+</MicrocontrollerModeling:Microcontroller>

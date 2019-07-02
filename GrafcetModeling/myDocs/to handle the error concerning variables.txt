@@ -1,0 +1,20 @@
+﻿Lors du chargement d'une instance du Ecore model Variable, il y a un problème :
+
+Les objets obtenus de l'instance xmi sont tels 
+qu'on charge d'abord les objets de type Transition avant de charger les Variable.
+
+Il faut donc modifier ce chargeur de modèles pour lui donner un ordre de chargement :
+- Les Variables d'abord
+- Les StepToTransition
+- Les TransitionToStep
+- ...
+
+
+Quelques solutions possibles :
+	[Meilleure solution]
+- charger complètement le modèle puis appeler les transitions pour construire les expressions associées.
+	Comment le faire ?
+	Ceci permet de retrouver les variables existantes dans le modèle avant la construction des instances.
+
+#############################################
+les liens vers Expression sont rendus transcient, i.e. n'ont pas besoin d'être sérialisés, et par conséquent ne seront pas enregistrés.

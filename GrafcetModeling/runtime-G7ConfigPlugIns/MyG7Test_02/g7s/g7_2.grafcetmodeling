@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grafcetModeling:Grafcet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grafcetModeling="http://www.example.org/grafcetModeling" name="Un Grafcet de Test Numero 2">
+  <connections xsi:type="grafcetModeling:StepToTransition" />
+  <connections xsi:type="grafcetModeling:TransitionToStep" />
+  <connections xsi:type="grafcetModeling:StepToTransition" />
+  <transitions receptivity="X_s1 or X_s5=true">
+    <transitionCondition name="(X_s1 or (X_s5 == true))">
+      <subExpr1 isSimple="true" name="X_s1" variable="//@variables.0"/>
+      <subExpr2 name="(X_s5 == true)">
+        <subExpr1 isSimple="true" name="X_s5" variable="//@variables.5"/>
+        <subExpr2 isSimple="true" name="true" boolValue="true" isConstant="true"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="EQU"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <steps name="s1" variable="//@variables.0"/>
+  <steps  name="s0" variable="//@variables.1"/>
+  <steps  name="s2" variable="//@variables.2"/>
+  <steps  name="s3" variable="//@variables.3"/>
+  <steps  name="s4" variable="//@variables.4"/>
+  <steps  name="s5" variable="//@variables.5"/>
+  <steps  name="s6" variable="//@variables.6"/>
+  <steps  name="s7" variable="//@variables.7"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable"  name="X_s1" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable"  name="X_s0" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable"  name="X_s2" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable"  name="X_s3" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable"  name="X_s4" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable"  name="X_s5" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable"  name="X_s6" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X_s7" type="Internal"/>
+</grafcetModeling:Grafcet>

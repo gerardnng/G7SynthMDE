@@ -1,0 +1,35 @@
+[comment encoding = UTF-8 /]
+[module generateG7MM2Code('http://www.example.org/grafcetModeling', 'http://www.example.org/microcontrollermodeling')]
+[import G7MMToCode::main::generate_G7_structures/]
+[import G7MMToCode::main::genG7Services/]
+[template public generateMainCode(ag7 : Grafcet, aMicro : Microcontroller)]
+[comment @main/]
+[file ((ag7.name + '/' + ag7.name + '.'+aMicro.clanguage.filesExtension).replaceAll(' ','_'), false, 'UTF-8')] 
+//Code generated from the g7 "[ag7.name/]" and the µC "[aMicro.name/]"
+//Date: [getTime()/]
+[generate_header_and_global_variables(ag7, aMicro)/]
+boolean transitions_fired;
+void setup(){
+[generate_initializations(ag7, aMicro)/]
+}
+void loop(){ 
+[generate_inputsBoardReading(ag7, aMicro)/]
+	transitions_fired = 0;
+[generate_next_state_calculations(ag7)/]
+[generate_outputs_calculations(ag7)/]
+	if(!transitions_fired){
+[generate_UpdatingLevelActions_Outputs_variables(ag7, aMicro)/]
+	}
+[generate_UpdatingStoredActions_Outputs_variables(ag7, aMicro)/]
+[generate_SaveOldModel_Variables(ag7)/]
+}
+[if (aMicro.clanguage.hasMain)]
+int main(void){
+  setup();
+  for ( ; ; ) loop(); // repeat indefinitely the function loop()
+  return 0;
+}
+[/if]
+[generate_other_functions(ag7, aMicro)/]
+[/file]
+[/template]

@@ -1,0 +1,9 @@
+[comment encoding = UTF-8 /]
+[module generateTests('http://www.example.org/grafcetModeling', 'http://www.example.org/microcontrollermodeling')]
+
+[comment]this module is to test how to also take in input a microcontroller[/comment]
+
+[template public generateTests(ag7 : Grafcet, aMicro:Microcontroller)]
+Microcontroller name : [aMicro.name/]
+Microcontroller has main : [aMicro.clanguage.hasMain/]
+[/template]

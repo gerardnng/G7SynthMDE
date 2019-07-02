@@ -1,0 +1,168 @@
+[comment encoding = UTF-8 /]
+[module generate_main_structures('http://www.example.org/grafcetModeling')]
+
+[import G7MM2Arduino::main::generate_grafcet_declarations/]
+[import G7MM2Arduino::main::other_g7_templates/]
+
+[comment]######################################################[/comment]
+[template public generate_header_and_global_variables(ag7 : Grafcet)]
+[comment Date : [query public getCurrentTime(traceabilityContext : OclAny) : String = invoke('G7MM2Arduino.main.generateG7ToArduino', 'getCurrentTime', Sequence{})  
+/]
+[declareHeaderInfos(ag7)/]
+
+[generate_PinsIOModel_Constants(ag7.variables->asSet())/]
+[generate_declareModelIOPinsStates_Variables(ag7.variables->asSet())/]
+[generate_declareModelInternal_Variables(ag7.variables->asSet())/]
+[generate_declareModelTransitions_Variables(ag7.transitions->asSet())/]
+[generate_declareStepActivityDuration_Variables(ag7)/]
+
+[if (ag7.hasTimeConditions())]
+[generate_declare_TimingVariables_duration(ag7)/]
+//To manage timer or measuring duration of active steps
+const unsigned int PROGRAM_PERIOD = 100; //i.e. 100 ms = 1/10 seconds
+[/if]
+[/template]
+
+[comment]##################### INITIALIZATIONS #############################[/comment]
+[template public generate_initializations(ag7 : Grafcet)]
+[if (ag7.hasTimeConditions())]
+	initializeTimer1();
+	//Serial.begin(9600);
+[/if]
+
+[generate_pinsConfigurations(ag7)/]
+[generate_InitializeInitialStepsVariables(ag7.steps)/]
+[/template]
+
+[comment]####################### NEXT STATE CALCULATION ##################[/comment]
+[template public generate_next_state_calculations(ag7 : Grafcet)]
+[generate_validatedTransitions_EvalStr(ag7)/]
+[generate_receptivities_EvalStr(ag7)/]
+[generate_firingTransitions_EvalStr(ag7)/]
+[generate_evaluation_if_any_transitions_fired(ag7.transitions)/]
+[evaluate_NextStepsActivity_variables(ag7)/]
+[/template]
+
+[comment]######################## OUTPUTs CALCULATION ####################[/comment]
+[template public generate_outputs_calculations(ag7 : Grafcet)]
+[generate_ResetDigitalOutput_variables(ag7)/]
+[generate_EvalDigitalOutput_variables(ag7)/]
+[generate_EvalAnalogOutput_variables(ag7)/]
+[/template]
+
+[comment]######################################################[/comment]
+[template public generate_other_functions(ag7 : Grafcet)]
+[insertTimerInformations(ag7.hasTimeConditions())/]
+[if (ag7.hasTimeConditions())]
+[generate_update_timingVariables(ag7)/]
+[/if]
+[/template]
+
+
+[template public declareHeaderInfos(g7 : Grafcet)]
+[comment]call Garfect generateG7Elements Function to initialize all its components[/comment]
+[g7.generateG7Elements()/]
+[if (g7.hasTimeConditions())]
+#include "TimerOne.h"
+[/if]
+[/template]
+
+[template public generate_PinsIOModel_Constants(g7_vars : Set(Variable))]
+//NB: The default value for every pin is 0. The user is supposed to modify it according to its need
+[let inputPinsVariables : Set(Variable) = g7_vars->select(v: Variable|v.type = VarType::Input)]
+[if(inputPinsVariables->size()>0)]
+//**** 	 Declare INPUT pins mapped	**** Total : [inputPinsVariables->size()/]
+[for (var : Variable | inputPinsVariables)]
+const byte pin_[var.name/] = 0;
+[/for]
+[/if]
+[/let]
+
+[let outputPinsVariables : Set(Variable) = g7_vars->select(v: Variable|v.type = VarType::Output)]
+[if(outputPinsVariables->size()>0)]
+//**** 	 Declare OUTPUT pins mapped	**** Total : [outputPinsVariables->size()/]
+[for (var : Variable | outputPinsVariables)]
+const byte pin_[var.name/] = 0;
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public insertTimerInformations(hasTimecond : Boolean)]
+[comment]Inserted when the grafcet has timing conditions[/comment]
+[if (hasTimecond)]
+void initializeTimer1(){
+	//Timer1.initialize(1000000);// initialize timer1, and set a 1 second period
+	unsigned int FT_Steps = 1000/PROGRAM_PERIOD; //FT_Steps = frequency_timer
+	// initialize timer1
+  	Timer1.initialize(1000000/FT_Steps);       
+	// attaches callback() as a timer overflow interrupt
+	Timer1.attachInterrupt(timingVariable_timer_update_callback);   
+}
+[/if]
+[/template]
+
+[template public generate_update_timingVariables(ag7 : Grafcet)]
+void timingVariable_timer_update_callback(){
+[if (ag7.steps->size()>0)]
+	//Updating durations of steps activity variables
+[for (step : Step | ag7.steps)]
+	if(X_[step.name/]){X_[step.name/]_duration ++ ; } else { X_[step.name/]_duration = 0;}
+[/for]
+[/if]
+
+[generate_update_variables_TimingOperators(ag7)/]
+}
+[/template]
+
+[template public generate_inputsBoardReading(g7 : Grafcet)]
+[if(g7.variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Input)->size()>0)]
+	//Reading states of Digital INPUT pins / Input variables
+[for (var : Variable | g7.variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Input))]
+	[var.name/] = digitalRead(pin_[var.name/]);
+[/for]
+[/if]
+[if(g7.variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Input)->size()>0)]
+	
+	//Reading states of ANALOG/Numeric INPUT pins  / Output variables	
+[for (var : Variable | g7.variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Input))]
+	[var.name/] = analogRead(pin_[var.name/]);
+[/for]
+[/if]
+[/template]
+
+[template public generate_UpdateOldModel_Variables(g7 : Grafcet)]
+[generate_UpdateOldIOPinsStates_Variables(g7.variables)/]
+[generate_UpdateOldInternalStates_Variables(g7.variables)/]
+[generate_UpdateOld_TimingVariables_duration(g7)/]
+[/template]
+
+[template public generate_UpdatingLevelActions_Outputs_variables(g7 : Grafcet)]
+[comment] Building the set of Digital output actions [/comment]
+[let g7_levelActions_vars : OrderedSet(Variable) = g7.steps.actions->filter(LevelAction).actionVariable->asOrderedSet()]
+[if (g7_levelActions_vars->size()>0)]
+		//A stable situation is reached
+		//Updating LEVEL ACTIONS OR DIGITAL OUTPUTs
+[for(l_action_var : Variable | g7_levelActions_vars)]
+		if([l_action_var.name/]_Old != [l_action_var.name/]){
+			digitalWrite(pin_[l_action_var.name/], [l_action_var.name/]); 
+		}
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_UpdatingStoredActions_Outputs_variables(g7 : Grafcet)]
+[comment] Building the set of Analog output actions [/comment]
+[let g7_storedActionsVariables : OrderedSet(Variable) = g7.steps.actions->filter(StoredAction).actionVariable->asOrderedSet()]
+[comment] Updating Analog actions [/comment]
+[if (g7_storedActionsVariables->size()>0)]
+	//Updating Analog/Stored Actions/OUTPUTs
+[for(s_action_var : Variable | g7_storedActionsVariables)]
+[if(s_action_var.type=VarType::Output)]
+	analogWrite(pin_[s_action_var.name/], [s_action_var.name/]);
+[/if]
+[/for]
+[/if]
+[/let]
+[/template]

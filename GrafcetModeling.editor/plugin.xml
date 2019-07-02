@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated grafcetModeling -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="grafcetmodeling.model.grafcetModeling.presentation.GrafcetModelingModelWizardID"
+            name="%_UI_GrafcetModelingModelWizard_label"
+            class="grafcetmodeling.model.grafcetModeling.presentation.GrafcetModelingModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GrafcetModelingModelFile.gif">
+         <description>%_UI_GrafcetModelingModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated grafcetModeling -->
+      <editor
+            id="grafcetmodeling.model.grafcetModeling.presentation.GrafcetModelingEditorID"
+            name="%_UI_GrafcetModelingEditor_label"
+            icon="icons/full/obj16/GrafcetModelingModelFile.gif"
+            extensions="grafcetmodeling"
+            class="grafcetmodeling.model.grafcetModeling.presentation.GrafcetModelingEditor"
+            contributorClass="grafcetmodeling.model.grafcetModeling.presentation.GrafcetModelingActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

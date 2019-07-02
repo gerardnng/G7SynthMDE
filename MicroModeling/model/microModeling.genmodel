@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/MicroModeling/src" modelPluginID="MicroModeling"
+    modelName="MicroModeling" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>MicrocontrollerModeling.ecore</foreignModel>
+  <genPackages prefix="MicrocontrollerModeling" basePackage="micromodeling.model"
+      disposableProviderFactory="true" ecorePackage="MicrocontrollerModeling.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//PinNature">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//PinNature/Digital"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//PinNature/Analog"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//PinNature/Mixed"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//SpeedUnit">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//SpeedUnit/Hz"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//SpeedUnit/Mhz"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//SpeedUnit/GHz"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//SpeedUnit/MIPS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//MemoryUnit">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//MemoryUnit/Mo"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//MemoryUnit/Go"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//MemoryUnit/Ko"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//WordSize">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//WordSize/wd_8bits"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//WordSize/wd_16bits"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//WordSize/wd_24bits"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//WordSize/wd_32bits"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//WordSize/wd_48bits"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//WordSize/wd_64bits"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//OperationName">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//OperationName/digitalPinRead"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//OperationName/digitalPinWrite"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//OperationName/analogPinRead"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//OperationName/analogPinWrite"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//OperationName/pinConfigMode"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//TimerOp">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//TimerOp/initializeTimer"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//RegType">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//RegType/accumulator"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//RegType/general"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//RegType/PCounter"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//RegType/Stack"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//RegType/CCR"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//RegType/ICR"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//RegType/IR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MicrocontrollerModeling.ecore#//PinModes">
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//PinModes/Input"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//PinModes/Output"/>
+      <genEnumLiterals ecoreEnumLiteral="MicrocontrollerModeling.ecore#//PinModes/InOut"/>
+    </genEnums>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Microcontroller">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Microcontroller/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Microcontroller/pins"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Microcontroller/clanguage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Microcontroller/processor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Microcontroller/family"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Microcontroller/manufacturer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Microcontroller/rom"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Microcontroller/flash"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Microcontroller/ram"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Microcontroller/wordMemory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Microcontroller/registers"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Pin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Pin/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Pin/nature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Pin/number"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//CLanguage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//CLanguage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//CLanguage/libraries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//CLanguage/timerconfig"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//CLanguage/pinmode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//CLanguage/hasMain"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//CLanguage/filesExtension"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//CLanguage/pinoperation"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Library">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Library/name"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Function/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Function/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MicrocontrollerModeling.ecore#//Function/instructions"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//TimerConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//TimerConfig/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//TimerConfig/period"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Memory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Memory/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Memory/size"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Processor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Processor/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Processor/speed"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//ROM"/>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//EEPROM"/>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Flash"/>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//RAM"/>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//PinMode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//PinMode/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//PinMode/value"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Parameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Instruction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Instruction/value"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//Register">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Register/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//Register/type"/>
+    </genClasses>
+    <genClasses ecoreClass="MicrocontrollerModeling.ecore#//PinOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MicrocontrollerModeling.ecore#//PinOperation/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

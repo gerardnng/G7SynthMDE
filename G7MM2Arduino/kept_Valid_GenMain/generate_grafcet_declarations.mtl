@@ -1,0 +1,105 @@
+[comment encoding = UTF-8 /]
+[module generate_grafcet_declarations('http://www.example.org/grafcetModeling')]
+
+
+[template public generate_declareModelIOPinsStates_Variables(variables : Set(Variable))]
+[let inBoolVariables : Set(BooleanVariable) = variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Input)]
+[if(inBoolVariables->size()>0)]
+//**** 	 Declare DIGITAL INPUT pins states	**** Total : [inBoolVariables->size()/]
+[for (var : Variable | inBoolVariables)]
+boolean [var.name/] = false, [var.name/]_Old = false ;
+[/for]
+[/if]
+[/let]
+
+[let outBoolVariables : Set(BooleanVariable) = variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Output)]
+[if(outBoolVariables->size()>0)]
+//**** 	 Declare states of DIGITAL OUTPUT	**** Total : [outBoolVariables->size()/]
+[for (var : Variable | outBoolVariables)]
+boolean [var.name/] = false, [var.name/]_Old = false ;
+[/for]
+[/if]
+[/let]
+
+[let inNumericVariables : Set(NumericVariable) = variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Input)]
+[if(inNumericVariables->size()>0)]
+//**** 	 Declare states of ANALOG INPUT	**** Total : [inNumericVariables->size()/]
+[for (var : Variable | inNumericVariables)]
+int [var.name/] = 0, [var.name/]_Old = 0 ;
+[/for]
+[/if]
+[/let]
+
+[let outNumericVariables : Set(NumericVariable) = variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Output)]
+[if(outNumericVariables->size()>0)]
+//**** 	 Declare ANALOG OUTPUT pins states	**** Total : [outNumericVariables->size()/]
+[for (var : Variable | outNumericVariables)]
+int [var.name/] = 0, [var.name/]_Old = 0 ;
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_declareModelInternal_Variables(variables : Set(Variable))]
+[let boolInternalVariables : Set(BooleanVariable) = variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Internal)]
+[if(boolInternalVariables->size()>0)]
+//**** 	 Declare BOOLEAN Internal variables (With steps activity)	**** Total : [boolInternalVariables->size()/]
+[for (var : Variable | boolInternalVariables)]
+boolean [var.name/] = false, [var.name/]_Old = false ;
+[/for]
+[/if]
+[/let]
+
+[let numInternalVariables : Set(NumericVariable) = variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Internal)]
+[if(numInternalVariables->size()>0)]
+//**** 	 Declare NUMERICAL Internal variables	**** Total : [numInternalVariables->size()/]
+[for (var : Variable | numInternalVariables)]
+int [var.name/] = 0, [var.name/]_Old = 0;
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_declareModelTransitions_Variables(g7_transitions : Set(Transition))]
+//Variables to evaluate firing transitions
+[if (g7_transitions->size()>0)]
+//**** 	 Declare Validated Transitions variables	****
+[for (trans : Transition | g7_transitions)]
+boolean VT_[trans.name/] = false;
+[/for]
+
+//**** 	 Declare Receptivities of Transitions variables	****
+[for (trans : Transition | g7_transitions)]
+boolean R_[trans.name/] = false;
+[/for]
+
+//**** 	 Declare Firing Transitions variables	****
+[for (trans : Transition | g7_transitions)]
+boolean FT_[trans.name/] = false;
+[/for]
+[/if]
+[/template]
+
+[template public generate_declareStepActivityDuration_Variables(g7 : Grafcet)]
+[if (g7.hasTimeConditions())]
+[if (g7.steps->size()>0)]
+//**** 	 Declare STEPs timing variables for duration activity 	****
+[for (step : Step | g7.steps)]
+unsigned int [step.variable.name/]_duration = 0;
+[/for]
+[/if]
+[/if]
+[/template]
+
+[template public generate_declare_TimingVariables_duration(g7 : Grafcet)]
+[let timingVariablesExpr: OrderedSet(Expression) = g7.getTimeExprs()->asOrderedSet()]
+[if (timingVariablesExpr->size()>0)]
+//Number of timing Variables in Grafcet Expressions : [timingVariablesExpr->size()/]
+[for (expr : Expression | timingVariablesExpr)]
+
+//[expr.name/]: The following variable measures the duration since which <[expr.subExpr2.name/]> has been ON, until its next Rising Edge (RE)
+unsigned long [expr.subExpr2.getName2()/]_duration = 0; unsigned long [expr.subExpr2.getName2()/]_duration_Old = 0;
+[/for]
+[/if]
+[/let]
+[/template]

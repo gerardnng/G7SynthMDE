@@ -1,0 +1,22 @@
+-- @path ContrSynthEnv=/Fusion_G7Micro_MM/metamodel/grafcetMircoSynthesis.ecore
+-- @path Microcontroller=/MicroModeling/model/MicrocontrollerModeling.ecore
+-- @path Grafcet=/GrafcetModeling/model/grafcetModeling.ecore
+
+module grafcetMicro2ControlEnv;
+create OUT : ContrSynthEnv from IN : Grafcet, IN1 : Microcontroller;
+
+rule createContrSynthEnv{
+	from g7: Grafcet!Grafcet, micro: Microcontroller!Microcontroller
+	to csEnv: ContrSynthEnv!ControllerSynthesisEnv(
+		name <- g7.name + '_' + micro.name,
+		grafcet <- g7,
+		microcontroller <- micro
+	)
+}
+
+rule g7_2_g7{
+	from g7: Grafcet!Grafcet
+	to csEnv: ContrSynthEnv!Grafcet(
+		
+	)
+}

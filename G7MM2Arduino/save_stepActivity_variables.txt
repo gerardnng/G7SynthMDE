@@ -1,0 +1,8 @@
+[template public save_stepActivity_variables(g7 : Grafcet)]
+[if (g7.steps->size()>0)]
+	//Save Step activity variables state in Old_ corresponding variables
+[for (step : Step | g7.steps)]
+	[step.variable.name/]_Old = [step.variable.name/];
+[/for]
+[/if]
+[/template]

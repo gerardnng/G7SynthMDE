@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grafcetModeling:Grafcet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grafcetModeling="http://www.example.org/grafcetModeling" name="Case Study Water providing">
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con3"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con4"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con7"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con8"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con11"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con12"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con15"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con16"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con19"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con21"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con22"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con25"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con26"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con27"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con29"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con30"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con31"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con33"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con36"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con39"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con43"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con44"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con45"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con46"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con49"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con51"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con52"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con53"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con56"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con57"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con60"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="con62"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con1"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con2"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con5"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con6"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con9"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con10"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con13"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con14"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con17"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con18"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con23"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con24"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con64"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con65"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con28"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con32"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con37"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con38"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con34"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con35"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con40"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con41"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con42"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con47"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con48"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con50"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con58"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con59"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con54"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con55"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con61"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="con63"/>
+  <transitions name="T1" receptivity="not mT2 and rain" inConnections="//@connections.14" outConnections="//@connections.50">
+    <transitionCondition name="((not mT2) and rain)">
+      <subExpr1 name="(not mT2)">
+        <subExpr2 isSimple="true" name="mT2" variable="//@variables.4"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T2" receptivity="(srl or bcl) and not mT2 and rain and mT2" inConnections="//@connections.15" outConnections="//@connections.51">
+    <transitionCondition name="((((srl or bcl) and (not mT2)) and rain) and mT2)">
+      <subExpr1 name="(((srl or bcl) and (not mT2)) and rain)">
+        <subExpr1 name="((srl or bcl) and (not mT2))">
+          <subExpr1 name="(srl or bcl)">
+            <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+            <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator"/>
+          </subExpr1>
+          <subExpr2 name="(not mT2)">
+            <subExpr2 isSimple="true" name="mT2" variable="//@variables.4"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr1>
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="mT2" variable="//@variables.4"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T3" receptivity="hT2 or not rain" inConnections="//@connections.17" outConnections="//@connections.46">
+    <transitionCondition name="(hT2 or (not rain))">
+      <subExpr1 isSimple="true" name="hT2" variable="//@variables.5"/>
+      <subExpr2 name="(not rain)">
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T4" receptivity="(not(srl or bcl) or not mT1) and (not srl and not bcl and pUES) and not bT2 and not rain" inConnections="//@connections.18" outConnections="//@connections.47">
+    <transitionCondition name="(((((not (srl or bcl)) or (not mT1)) and (((not srl) and (not bcl)) and pUES)) and (not bT2)) and (not rain))">
+      <subExpr1 name="((((not (srl or bcl)) or (not mT1)) and (((not srl) and (not bcl)) and pUES)) and (not bT2))">
+        <subExpr1 name="(((not (srl or bcl)) or (not mT1)) and (((not srl) and (not bcl)) and pUES))">
+          <subExpr1 name="((not (srl or bcl)) or (not mT1))">
+            <subExpr1 name="(not (srl or bcl))">
+              <subExpr2 name="(srl or bcl)">
+                <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+                <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator"/>
+              </subExpr2>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+            </subExpr1>
+            <subExpr2 name="(not mT1)">
+              <subExpr2 isSimple="true" name="mT1" variable="//@variables.1"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+            </subExpr2>
+            <operator xsi:type="grafcetModeling:LogicalOperator"/>
+          </subExpr1>
+          <subExpr2 name="(((not srl) and (not bcl)) and pUES)">
+            <subExpr1 name="((not srl) and (not bcl))">
+              <subExpr1 name="(not srl)">
+                <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+              </subExpr1>
+              <subExpr2 name="(not bcl)">
+                <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+              </subExpr2>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+            </subExpr1>
+            <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr1>
+        <subExpr2 name="(not bT2)">
+          <subExpr2 isSimple="true" name="bT2" variable="//@variables.3"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 name="(not rain)">
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T5" receptivity="not mT1 and hT2 and rain" inConnections="//@connections.8" outConnections="//@connections.43">
+    <transitionCondition name="(((not mT1) and hT2) and rain)">
+      <subExpr1 name="((not mT1) and hT2)">
+        <subExpr1 name="(not mT1)">
+          <subExpr2 isSimple="true" name="mT1" variable="//@variables.1"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr1>
+        <subExpr2 isSimple="true" name="hT2" variable="//@variables.5"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T6" receptivity="hT1 or not mT2 or not rain" inConnections="//@connections.12" outConnections="//@connections.40">
+    <transitionCondition name="((hT1 or (not mT2)) or (not rain))">
+      <subExpr1 name="(hT1 or (not mT2))">
+        <subExpr1 isSimple="true" name="hT1" variable="//@variables.2"/>
+        <subExpr2 name="(not mT2)">
+          <subExpr2 isSimple="true" name="mT2" variable="//@variables.4"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr1>
+      <subExpr2 name="(not rain)">
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T7" receptivity="(srl or bcl) and not mT1 and not rain and bWD" inConnections="//@connections.9" outConnections="//@connections.44">
+    <transitionCondition name="((((srl or bcl) and (not mT1)) and (not rain)) and bWD)">
+      <subExpr1 name="(((srl or bcl) and (not mT1)) and (not rain))">
+        <subExpr1 name="((srl or bcl) and (not mT1))">
+          <subExpr1 name="(srl or bcl)">
+            <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+            <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator"/>
+          </subExpr1>
+          <subExpr2 name="(not mT1)">
+            <subExpr2 isSimple="true" name="mT1" variable="//@variables.1"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr1>
+        <subExpr2 name="(not rain)">
+          <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="bWD" variable="//@variables.6"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T8" receptivity="hT2 or not pU" inConnections="//@connections.11" outConnections="//@connections.41">
+    <transitionCondition name="(hT2 or (not pU))">
+      <subExpr1 isSimple="true" name="hT2" variable="//@variables.5"/>
+      <subExpr2 name="(not pU)">
+        <subExpr2 isSimple="true" name="pU" variable="//@variables.7"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T9" receptivity="hT1 and hT2 and rain" inConnections="//@connections.30" outConnections="//@connections.62">
+    <transitionCondition name="((hT1 and hT2) and rain)">
+      <subExpr1 name="(hT1 and hT2)">
+        <subExpr1 isSimple="true" name="hT1" variable="//@variables.2"/>
+        <subExpr2 isSimple="true" name="hT2" variable="//@variables.5"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T10" receptivity="not mT1 or not mT2 or not rain" inConnections="//@connections.31" outConnections="//@connections.63">
+    <transitionCondition name="(((not mT1) or (not mT2)) or (not rain))">
+      <subExpr1 name="((not mT1) or (not mT2))">
+        <subExpr1 name="(not mT1)">
+          <subExpr2 isSimple="true" name="mT1" variable="//@variables.1"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr1>
+        <subExpr2 name="(not mT2)">
+          <subExpr2 isSimple="true" name="mT2" variable="//@variables.4"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr1>
+      <subExpr2 name="(not rain)">
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T11" receptivity="bT1" inConnections="//@connections.0" outConnections="//@connections.34">
+    <transitionCondition isSimple="true" name="bT1" variable="//@variables.0"/>
+  </transitions>
+  <transitions name="T12" receptivity="srl" inConnections="//@connections.20" outConnections="//@connections.55">
+    <transitionCondition isSimple="true" name="srl" variable="//@variables.9"/>
+  </transitions>
+  <transitions name="T13" receptivity="not srl" inConnections="//@connections.23" outConnections="//@connections.52">
+    <transitionCondition name="(not srl)">
+      <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T14" receptivity="not srl and bcl" inConnections="//@connections.21" outConnections="//@connections.56">
+    <transitionCondition name="((not srl) and bcl)">
+      <subExpr1 name="(not srl)">
+        <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T15" receptivity="srl or not bcl" inConnections="//@connections.24" outConnections="//@connections.53">
+    <transitionCondition name="(srl or (not bcl))">
+      <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+      <subExpr2 name="(not bcl)">
+        <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T16" receptivity="not srl and not bcl and pUES" inConnections="//@connections.22" outConnections="//@connections.57">
+    <transitionCondition name="(((not srl) and (not bcl)) and pUES)">
+      <subExpr1 name="((not srl) and (not bcl))">
+        <subExpr1 name="(not srl)">
+          <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr1>
+        <subExpr2 name="(not bcl)">
+          <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T17" receptivity="srl or bcl or not pUES" inConnections="//@connections.25" outConnections="//@connections.54">
+    <transitionCondition name="((srl or bcl) or (not pUES))">
+      <subExpr1 name="(srl or bcl)">
+        <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+        <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr1>
+      <subExpr2 name="(not pUES)">
+        <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T18" receptivity="bcl" inConnections="//@connections.26" outConnections="//@connections.60">
+    <transitionCondition isSimple="true" name="bcl" variable="//@variables.10"/>
+  </transitions>
+  <transitions name="T19" receptivity="not bcl" inConnections="//@connections.28" outConnections="//@connections.58">
+    <transitionCondition name="(not bcl)">
+      <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T20" receptivity="not bcl and pUES" inConnections="//@connections.27" outConnections="//@connections.61">
+    <transitionCondition name="((not bcl) and pUES)">
+      <subExpr1 name="(not bcl)">
+        <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T21" receptivity="bcl or not pUES" inConnections="//@connections.29" outConnections="//@connections.59">
+    <transitionCondition name="(bcl or (not pUES))">
+      <subExpr1 isSimple="true" name="bcl" variable="//@variables.10"/>
+      <subExpr2 name="(not pUES)">
+        <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T22" receptivity="not bT1" inConnections="//@connections.3" outConnections="//@connections.32">
+    <transitionCondition name="(not bT1)">
+      <subExpr2 isSimple="true" name="bT1" variable="//@variables.0"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T23" receptivity="not bT1 and not bWD and not rain and pU" inConnections="//@connections.1" outConnections="//@connections.35">
+    <transitionCondition name="((((not bT1) and (not bWD)) and (not rain)) and pU)">
+      <subExpr1 name="(((not bT1) and (not bWD)) and (not rain))">
+        <subExpr1 name="((not bT1) and (not bWD))">
+          <subExpr1 name="(not bT1)">
+            <subExpr2 isSimple="true" name="bT1" variable="//@variables.0"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr1>
+          <subExpr2 name="(not bWD)">
+            <subExpr2 isSimple="true" name="bWD" variable="//@variables.6"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr1>
+        <subExpr2 name="(not rain)">
+          <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="pU" variable="//@variables.7"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T24" receptivity="bT1 or bWD or rain or not pU" inConnections="//@connections.2" outConnections="//@connections.33">
+    <transitionCondition name="(((bT1 or bWD) or rain) or (not pU))">
+      <subExpr1 name="((bT1 or bWD) or rain)">
+        <subExpr1 name="(bT1 or bWD)">
+          <subExpr1 isSimple="true" name="bT1" variable="//@variables.0"/>
+          <subExpr2 isSimple="true" name="bWD" variable="//@variables.6"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator"/>
+        </subExpr1>
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr1>
+      <subExpr2 name="(not pU)">
+        <subExpr2 isSimple="true" name="pU" variable="//@variables.7"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T25" receptivity="bT2" inConnections="//@connections.4" outConnections="//@connections.38">
+    <transitionCondition isSimple="true" name="bT2" variable="//@variables.3"/>
+  </transitions>
+  <transitions name="T26" receptivity="not bT2" inConnections="//@connections.7" outConnections="//@connections.36">
+    <transitionCondition name="(not bT2)">
+      <subExpr2 isSimple="true" name="bT2" variable="//@variables.3"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T27" receptivity="not bT2 and not bWD and not rain and pU" inConnections="//@connections.5" outConnections="//@connections.39">
+    <transitionCondition name="((((not bT2) and (not bWD)) and (not rain)) and pU)">
+      <subExpr1 name="(((not bT2) and (not bWD)) and (not rain))">
+        <subExpr1 name="((not bT2) and (not bWD))">
+          <subExpr1 name="(not bT2)">
+            <subExpr2 isSimple="true" name="bT2" variable="//@variables.3"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr1>
+          <subExpr2 name="(not bWD)">
+            <subExpr2 isSimple="true" name="bWD" variable="//@variables.6"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr1>
+        <subExpr2 name="(not rain)">
+          <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="pU" variable="//@variables.7"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T28" receptivity="bT2 or bWD or rain or not pU" inConnections="//@connections.6" outConnections="//@connections.37">
+    <transitionCondition name="(((bT2 or bWD) or rain) or (not pU))">
+      <subExpr1 name="((bT2 or bWD) or rain)">
+        <subExpr1 name="(bT2 or bWD)">
+          <subExpr1 isSimple="true" name="bT2" variable="//@variables.3"/>
+          <subExpr2 isSimple="true" name="bWD" variable="//@variables.6"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator"/>
+        </subExpr1>
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr1>
+      <subExpr2 name="(not pU)">
+        <subExpr2 isSimple="true" name="pU" variable="//@variables.7"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T29" receptivity="not (srl or bcl) and ( not srl and not bcl and pUES)and not rain and bWD and not bT1" inConnections="//@connections.10" outConnections="//@connections.45">
+    <transitionCondition name="(((((not (srl or bcl)) and (((not srl) and (not bcl)) and pUES)) and (not rain)) and bWD) and (not bT1))">
+      <subExpr1 name="((((not (srl or bcl)) and (((not srl) and (not bcl)) and pUES)) and (not rain)) and bWD)">
+        <subExpr1 name="(((not (srl or bcl)) and (((not srl) and (not bcl)) and pUES)) and (not rain))">
+          <subExpr1 name="((not (srl or bcl)) and (((not srl) and (not bcl)) and pUES))">
+            <subExpr1 name="(not (srl or bcl))">
+              <subExpr2 name="(srl or bcl)">
+                <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+                <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator"/>
+              </subExpr2>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+            </subExpr1>
+            <subExpr2 name="(((not srl) and (not bcl)) and pUES)">
+              <subExpr1 name="((not srl) and (not bcl))">
+                <subExpr1 name="(not srl)">
+                  <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+                  <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+                </subExpr1>
+                <subExpr2 name="(not bcl)">
+                  <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                  <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+                </subExpr2>
+                <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+              </subExpr1>
+              <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+            </subExpr2>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+          </subExpr1>
+          <subExpr2 name="(not rain)">
+            <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr1>
+        <subExpr2 isSimple="true" name="bWD" variable="//@variables.6"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 name="(not bT1)">
+        <subExpr2 isSimple="true" name="bT1" variable="//@variables.0"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T30" receptivity="not(not srl and not bcl and pUES) or (srl or bcl) or rain or not bWD or mT1" inConnections="//@connections.13" outConnections="//@connections.42">
+    <transitionCondition name="(((((not (((not srl) and (not bcl)) and pUES)) or (srl or bcl)) or rain) or (not bWD)) or mT1)">
+      <subExpr1 name="((((not (((not srl) and (not bcl)) and pUES)) or (srl or bcl)) or rain) or (not bWD))">
+        <subExpr1 name="(((not (((not srl) and (not bcl)) and pUES)) or (srl or bcl)) or rain)">
+          <subExpr1 name="((not (((not srl) and (not bcl)) and pUES)) or (srl or bcl))">
+            <subExpr1 name="(not (((not srl) and (not bcl)) and pUES))">
+              <subExpr2 name="(((not srl) and (not bcl)) and pUES)">
+                <subExpr1 name="((not srl) and (not bcl))">
+                  <subExpr1 name="(not srl)">
+                    <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+                    <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+                  </subExpr1>
+                  <subExpr2 name="(not bcl)">
+                    <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                    <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+                  </subExpr2>
+                  <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+                </subExpr1>
+                <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+              </subExpr2>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+            </subExpr1>
+            <subExpr2 name="(srl or bcl)">
+              <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+              <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator"/>
+            </subExpr2>
+            <operator xsi:type="grafcetModeling:LogicalOperator"/>
+          </subExpr1>
+          <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator"/>
+        </subExpr1>
+        <subExpr2 name="(not bWD)">
+          <subExpr2 isSimple="true" name="bWD" variable="//@variables.6"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="mT1" variable="//@variables.1"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T31" receptivity="(not(srl or bcl) or not mT1) and (not srl and not bcl and pUES) and not bT2 and not rain" inConnections="//@connections.16" outConnections="//@connections.48">
+    <transitionCondition name="(((((not (srl or bcl)) or (not mT1)) and (((not srl) and (not bcl)) and pUES)) and (not bT2)) and (not rain))">
+      <subExpr1 name="((((not (srl or bcl)) or (not mT1)) and (((not srl) and (not bcl)) and pUES)) and (not bT2))">
+        <subExpr1 name="(((not (srl or bcl)) or (not mT1)) and (((not srl) and (not bcl)) and pUES))">
+          <subExpr1 name="((not (srl or bcl)) or (not mT1))">
+            <subExpr1 name="(not (srl or bcl))">
+              <subExpr2 name="(srl or bcl)">
+                <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+                <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator"/>
+              </subExpr2>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+            </subExpr1>
+            <subExpr2 name="(not mT1)">
+              <subExpr2 isSimple="true" name="mT1" variable="//@variables.1"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+            </subExpr2>
+            <operator xsi:type="grafcetModeling:LogicalOperator"/>
+          </subExpr1>
+          <subExpr2 name="(((not srl) and (not bcl)) and pUES)">
+            <subExpr1 name="((not srl) and (not bcl))">
+              <subExpr1 name="(not srl)">
+                <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+              </subExpr1>
+              <subExpr2 name="(not bcl)">
+                <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+              </subExpr2>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+            </subExpr1>
+            <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr1>
+        <subExpr2 name="(not bT2)">
+          <subExpr2 isSimple="true" name="bT2" variable="//@variables.3"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 name="(not rain)">
+        <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="T32" receptivity="(srl or bcl) and mT1 or not (not srl and not bcl and pUES) or mT2 or rain" inConnections="//@connections.19" outConnections="//@connections.49">
+    <transitionCondition name="(((((srl or bcl) and mT1) or (not (((not srl) and (not bcl)) and pUES))) or mT2) or rain)">
+      <subExpr1 name="((((srl or bcl) and mT1) or (not (((not srl) and (not bcl)) and pUES))) or mT2)">
+        <subExpr1 name="(((srl or bcl) and mT1) or (not (((not srl) and (not bcl)) and pUES)))">
+          <subExpr1 name="((srl or bcl) and mT1)">
+            <subExpr1 name="(srl or bcl)">
+              <subExpr1 isSimple="true" name="srl" variable="//@variables.9"/>
+              <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator"/>
+            </subExpr1>
+            <subExpr2 isSimple="true" name="mT1" variable="//@variables.1"/>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+          </subExpr1>
+          <subExpr2 name="(not (((not srl) and (not bcl)) and pUES))">
+            <subExpr2 name="(((not srl) and (not bcl)) and pUES)">
+              <subExpr1 name="((not srl) and (not bcl))">
+                <subExpr1 name="(not srl)">
+                  <subExpr2 isSimple="true" name="srl" variable="//@variables.9"/>
+                  <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+                </subExpr1>
+                <subExpr2 name="(not bcl)">
+                  <subExpr2 isSimple="true" name="bcl" variable="//@variables.10"/>
+                  <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+                </subExpr2>
+                <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+              </subExpr1>
+              <subExpr2 isSimple="true" name="pUES" variable="//@variables.11"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+            </subExpr2>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator"/>
+        </subExpr1>
+        <subExpr2 isSimple="true" name="mT2" variable="//@variables.4"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr1>
+      <subExpr2 isSimple="true" name="rain" variable="//@variables.8"/>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <steps name="FL_11" isInitial="true" inConnections="//@connections.32 //@connections.33" outConnections="//@connections.0 //@connections.1" variable="//@variables.26"/>
+  <steps name="FL_12" inConnections="//@connections.34" outConnections="//@connections.3" variable="//@variables.27">
+    <actions xsi:type="grafcetModeling:LevelAction" name="VF1" actionVariable="//@variables.17" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="FL_13" inConnections="//@connections.35" outConnections="//@connections.2" variable="//@variables.28">
+    <actions xsi:type="grafcetModeling:LevelAction" name="VU" actionVariable="//@variables.19" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+    <actions xsi:type="grafcetModeling:LevelAction" name="VU1" actionVariable="//@variables.20" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="FL_21" isInitial="true" inConnections="//@connections.37 //@connections.36" outConnections="//@connections.4 //@connections.5" variable="//@variables.29"/>
+  <steps name="FL_22" inConnections="//@connections.38" outConnections="//@connections.7" variable="//@variables.30">
+    <actions xsi:type="grafcetModeling:LevelAction" name="VF2" actionVariable="//@variables.18" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="FL_23" inConnections="//@connections.39" outConnections="//@connections.6" variable="//@variables.31">
+    <actions xsi:type="grafcetModeling:LevelAction" name="VU" actionVariable="//@variables.19" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+    <actions xsi:type="grafcetModeling:LevelAction" name="VU2" actionVariable="//@variables.21" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="T1_1" isInitial="true" inConnections="//@connections.40 //@connections.41 //@connections.42" outConnections="//@connections.8 //@connections.9 //@connections.10" variable="//@variables.32"/>
+  <steps name="T1_2" inConnections="//@connections.43" outConnections="//@connections.12" variable="//@variables.33">
+    <actions xsi:type="grafcetModeling:LevelAction" name="VR1" actionVariable="//@variables.15" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="T1_3" inConnections="//@connections.44" outConnections="//@connections.11" variable="//@variables.34">
+    <actions xsi:type="grafcetModeling:LevelAction" name="IP" actionVariable="//@variables.12" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="T1_4" inConnections="//@connections.45" outConnections="//@connections.13" variable="//@variables.35">
+    <actions xsi:type="grafcetModeling:LevelAction" name="IP" actionVariable="//@variables.12" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="T2_1" isInitial="true" inConnections="//@connections.46 //@connections.47 //@connections.49" outConnections="//@connections.14 //@connections.15 //@connections.16" variable="//@variables.36"/>
+  <steps name="T2_2" inConnections="//@connections.50" outConnections="//@connections.17" variable="//@variables.37">
+    <actions xsi:type="grafcetModeling:LevelAction" name="VR2" actionVariable="//@variables.16" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="T2_3" inConnections="//@connections.51" outConnections="//@connections.18" variable="//@variables.38">
+    <actions xsi:type="grafcetModeling:LevelAction" name="SP1" actionVariable="//@variables.49" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="T2_4" inConnections="//@connections.48" outConnections="//@connections.19" variable="//@variables.39">
+    <actions xsi:type="grafcetModeling:LevelAction" name="SP1" actionVariable="//@variables.49" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="SP_10" isInitial="true" inConnections="//@connections.52 //@connections.53 //@connections.54" outConnections="//@connections.20 //@connections.21 //@connections.22" variable="//@variables.40"/>
+  <steps name="SP_11" inConnections="//@connections.55" outConnections="//@connections.23" variable="//@variables.41">
+    <actions xsi:type="grafcetModeling:LevelAction" name="MX_SP0" actionVariable="//@variables.50" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="SP_12" inConnections="//@connections.56" outConnections="//@connections.24" variable="//@variables.42">
+    <actions xsi:type="grafcetModeling:LevelAction" name="MX_SP1" actionVariable="//@variables.51" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="SP_13" inConnections="//@connections.57" outConnections="//@connections.25" variable="//@variables.43">
+    <actions xsi:type="grafcetModeling:LevelAction" name="MX_SP0" actionVariable="//@variables.50" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+    <actions xsi:type="grafcetModeling:LevelAction" name="MX_SP1" actionVariable="//@variables.51" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="IP_14" isInitial="true" inConnections="//@connections.58 //@connections.59" outConnections="//@connections.26 //@connections.27" variable="//@variables.44"/>
+  <steps name="IP_15" inConnections="//@connections.60" outConnections="//@connections.28" variable="//@variables.45">
+    <actions xsi:type="grafcetModeling:LevelAction" name="MX_IP0" actionVariable="//@variables.52" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="IP_16" inConnections="//@connections.61" outConnections="//@connections.29" variable="//@variables.46">
+    <actions xsi:type="grafcetModeling:LevelAction" name="MX_IP1" actionVariable="//@variables.53" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <steps name="VR_6" isInitial="true" inConnections="//@connections.63" outConnections="//@connections.30" variable="//@variables.47"/>
+  <steps name="VR_7" inConnections="//@connections.62" outConnections="//@connections.31" variable="//@variables.48">
+    <actions xsi:type="grafcetModeling:LevelAction" name="VR" actionVariable="//@variables.14" condition="true">
+      <expressionCondition isSimple="true" name="true" boolValue="true" isConstant="true"/>
+    </actions>
+  </steps>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="bT1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="mT1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="hT1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="bT2"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="mT2"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="hT2"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="bWD"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="pU"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="rain"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="srl"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="bcl"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="pUES"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="IP"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="SP"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VR"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VR1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VR2"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VF1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VF2"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VU"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VU1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="VU2"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MXSP0"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MXSP1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MXIP0"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MXIP1"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XFL_11" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XFL_12" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XFL_13" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XFL_21" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XFL_22" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XFL_23" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT1_1" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT1_2" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT1_3" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT1_4" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT2_1" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT2_2" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT2_3" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XT2_4" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XSP_10" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XSP_11" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XSP_12" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XSP_13" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XIP_14" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XIP_15" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XIP_16" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XVR_6" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="XVR_7" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="SP1" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MX_SP0" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MX_SP1" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MX_IP0" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="MX_IP1" type="Output"/>
+</grafcetModeling:Grafcet>

@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="microGenerator" nsURI="G7MM2Arduino::main::microGenerator" startHeaderPosition="29" endHeaderPosition="182">
+    <input>
+      <takesTypesFrom href="http://www.example.org/microcontrollermodeling#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateMicroInfos" visibility="Public" main="true">
+      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;//For the microcontroller &#xA;Micro Name : "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Microcontroller/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;Micro family : "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Microcontroller/family"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;Micro manufacturer : "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Microcontroller/manufacturer"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;Frequency : "/>
+        <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/11/Sequence(Integer)">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/11/OrderedSet(Processor)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/processor"/>
+          </source>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateMicroInfos/%/collect/temp1">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Processor"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Processor/speed"/>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Processor"/>
+          </iterator>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
+        <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/11/Sequence(SpeedUnit)">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/11/OrderedSet(Processor)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/processor"/>
+          </source>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//SpeedUnit"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateMicroInfos/%/collect.1/temp2">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Processor"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Processor/unit"/>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="temp2">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Processor"/>
+          </iterator>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;Microcontroller has main : "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//CLanguage"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/clanguage"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//CLanguage/hasMain"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;---------------PINS--------------&#xA;Digital pins: "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          <source xsi:type="ocl.ecore:IteratorExp" name="select" eType="/11/OrderedSet(Pin)">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/11/OrderedSet(Pin)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/pins"/>
+            </source>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/generateMicroInfos/%/%.11/select/p">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Pin/nature"/>
+              </source>
+              <argument xsi:type="ocl.ecore:EnumLiteralExp">
+                <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+                <referredEnumLiteral xsi:type="ecore:EEnumLiteral" href="http://www.example.org/microcontrollermodeling#//PinNature/Digital"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/="/>
+            </body>
+            <iterator xsi:type="ocl.ecore:Variable" name="p">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+            </iterator>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/size"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xA;Analog pins : "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          <source xsi:type="ocl.ecore:IteratorExp" name="select" eType="/11/OrderedSet(Pin)">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/11/OrderedSet(Pin)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/pins"/>
+            </source>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/generateMicroInfos/%/%.13/select/p">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Pin/nature"/>
+              </source>
+              <argument xsi:type="ocl.ecore:EnumLiteralExp">
+                <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+                <referredEnumLiteral xsi:type="ecore:EEnumLiteral" href="http://www.example.org/microcontrollermodeling#//PinNature/Analog"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/="/>
+            </body>
+            <iterator xsi:type="ocl.ecore:Variable" name="p">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+            </iterator>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/size"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;Mixed pins &#x9;: "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          <source xsi:type="ocl.ecore:IteratorExp" name="select" eType="/11/OrderedSet(Pin)">
+            <source xsi:type="ocl.ecore:PropertyCallExp" eType="/11/OrderedSet(Pin)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/pins"/>
+            </source>
+            <body xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="p" referredVariable="/0/generateMicroInfos/%/%.15/select/p">
+                  <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Pin/nature"/>
+              </source>
+              <argument xsi:type="ocl.ecore:EnumLiteralExp">
+                <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+                <referredEnumLiteral xsi:type="ecore:EEnumLiteral" href="http://www.example.org/microcontrollermodeling#//PinNature/Mixed"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/="/>
+            </body>
+            <iterator xsi:type="ocl.ecore:Variable" name="p">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+            </iterator>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/size"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;- Total     : "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/11/OrderedSet(Pin)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/pins"/>
+          </source>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)_Class/size"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;-----------------------------&#xA;&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="PIN: name = "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="pin" referredVariable="/0/generateMicroInfos/%/%.19/pin">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Pin/name"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;number= "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="pin" referredVariable="/0/generateMicroInfos/%/%.19/pin">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Pin/number"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;Nature: "/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="pin" referredVariable="/0/generateMicroInfos/%/%.19/pin">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Pin/nature"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <loopVariable name="pin">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/11/OrderedSet(Pin)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/microcontrollermodeling#//Microcontroller/pins"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;Pin natures&#xA;"/>
+        <body xsi:type="ocl.ecore:EnumLiteralExp">
+          <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+          <referredEnumLiteral xsi:type="ecore:EEnumLiteral" href="http://www.example.org/microcontrollermodeling#//PinNature/Digital"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="ocl.ecore:EnumLiteralExp">
+          <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+          <referredEnumLiteral xsi:type="ecore:EEnumLiteral" href="http://www.example.org/microcontrollermodeling#//PinNature/Analog"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+        <body xsi:type="ocl.ecore:EnumLiteralExp">
+          <eType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//PinNature"/>
+          <referredEnumLiteral xsi:type="ecore:EEnumLiteral" href="http://www.example.org/microcontrollermodeling#//PinNature/Mixed"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
+        <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replace">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/oclstdlib_String_Class/replaceAll">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aMicro" referredVariable="/0/generateMicroInfos/aMicro">
+                <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/microcontrollermodeling#//Microcontroller/name"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" ">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="_">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="/">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="_">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+        </fileUrl>
+        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </charset>
+      </body>
+      <parameter name="aMicro">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="replace">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="replaceAll">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="substring">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+        <eParameters name="replacement">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateMicroInfos">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateMicroInfos"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aMicro">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MicrocontrollerModeling_Microcontroller_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Processor)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Processor"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Integer)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(SpeedUnit)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EEnum" href="http://www.example.org/microcontrollermodeling#//SpeedUnit"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Pin)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SetType" instanceClassName="java.util.Set">
+      <elementType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Pin"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/microcontrollermodeling#//Microcontroller"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateMicroInfos">
+      <details key="start" value="105"/>
+      <details key="end" value="1053"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateMicroInfos/%">
+      <details key="start" value="185"/>
+      <details key="end" value="1041"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateMicroInfos/%/%">
+      <details key="start" value="261"/>
+      <details key="end" value="302"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateMicroInfos/%/%.1">
+      <details key="start" value="303"/>
+      <details key="end" value="314"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateMicroInfos/%/%.1/aMicro">
+      <details key="start" value="303"/>
+      <details key="end" value="309"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateMicroInfos/%/%.2">
+      <details key="start" value="316"/>
+      <details key="end" value="332"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateMicroInfos/%/%.3">
+      <details key="start" value="333"/>
+      <details key="end" value="346"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateMicroInfos/%/%.3/aMicro">
+      <details key="start" value="333"/>
+      <details key="end" value="339"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateMicroInfos/%/%.4">
+      <details key="start" value="348"/>
+      <details key="end" value="370"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateMicroInfos/%/%.5">
+      <details key="start" value="371"/>
+      <details key="end" value="390"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateMicroInfos/%/%.5/aMicro">
+      <details key="start" value="371"/>
+      <details key="end" value="377"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateMicroInfos/%/%.6">
+      <details key="start" value="392"/>
+      <details key="end" value="406"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateMicroInfos/%/collect">
+      <details key="start" value="407"/>
+      <details key="end" value="429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateMicroInfos/%/collect/%">
+      <details key="start" value="407"/>
+      <details key="end" value="423"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateMicroInfos/%/collect/%/aMicro">
+      <details key="start" value="407"/>
+      <details key="end" value="413"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateMicroInfos/%/collect/%.1">
+      <details key="start" value="424"/>
+      <details key="end" value="429"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateMicroInfos/%/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateMicroInfos/%/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateMicroInfos/%/%.7">
+      <details key="start" value="431"/>
+      <details key="end" value="432"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateMicroInfos/%/collect.1">
+      <details key="start" value="433"/>
+      <details key="end" value="454"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateMicroInfos/%/collect.1/%">
+      <details key="start" value="433"/>
+      <details key="end" value="449"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateMicroInfos/%/collect.1/%/aMicro">
+      <details key="start" value="433"/>
+      <details key="end" value="439"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateMicroInfos/%/collect.1/%.1">
+      <details key="start" value="450"/>
+      <details key="end" value="454"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateMicroInfos/%/collect.1/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateMicroInfos/%/collect.1/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateMicroInfos/%/%.8">
+      <details key="start" value="456"/>
+      <details key="end" value="485"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateMicroInfos/%/%.9">
+      <details key="start" value="486"/>
+      <details key="end" value="510"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateMicroInfos/%/%.9/%">
+      <details key="start" value="486"/>
+      <details key="end" value="502"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateMicroInfos/%/%.9/%/aMicro">
+      <details key="start" value="486"/>
+      <details key="end" value="492"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateMicroInfos/%/%.10">
+      <details key="start" value="512"/>
+      <details key="end" value="562"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateMicroInfos/%/%.11">
+      <details key="start" value="563"/>
+      <details key="end" value="623"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateMicroInfos/%/%.11/select">
+      <details key="start" value="563"/>
+      <details key="end" value="615"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateMicroInfos/%/%.11/select/%">
+      <details key="start" value="563"/>
+      <details key="end" value="574"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateMicroInfos/%/%.11/select/%/aMicro">
+      <details key="start" value="563"/>
+      <details key="end" value="569"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateMicroInfos/%/%.11/select/%.1">
+      <details key="start" value="585"/>
+      <details key="end" value="614"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateMicroInfos/%/%.11/select/%.1/%">
+      <details key="start" value="585"/>
+      <details key="end" value="593"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateMicroInfos/%/%.11/select/%.1/%/p">
+      <details key="start" value="585"/>
+      <details key="end" value="586"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateMicroInfos/%/%.11/select/%.1/%.1">
+      <details key="start" value="596"/>
+      <details key="end" value="614"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateMicroInfos/%/%.11/select/p">
+      <details key="start" value="583"/>
+      <details key="end" value="584"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateMicroInfos/%/%.12">
+      <details key="start" value="625"/>
+      <details key="end" value="641"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateMicroInfos/%/%.13">
+      <details key="start" value="642"/>
+      <details key="end" value="701"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateMicroInfos/%/%.13/select">
+      <details key="start" value="642"/>
+      <details key="end" value="693"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateMicroInfos/%/%.13/select/%">
+      <details key="start" value="642"/>
+      <details key="end" value="653"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateMicroInfos/%/%.13/select/%/aMicro">
+      <details key="start" value="642"/>
+      <details key="end" value="648"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateMicroInfos/%/%.13/select/%.1">
+      <details key="start" value="664"/>
+      <details key="end" value="692"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateMicroInfos/%/%.13/select/%.1/%">
+      <details key="start" value="664"/>
+      <details key="end" value="672"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateMicroInfos/%/%.13/select/%.1/%/p">
+      <details key="start" value="664"/>
+      <details key="end" value="665"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateMicroInfos/%/%.13/select/%.1/%.1">
+      <details key="start" value="675"/>
+      <details key="end" value="692"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateMicroInfos/%/%.13/select/p">
+      <details key="start" value="662"/>
+      <details key="end" value="663"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateMicroInfos/%/%.14">
+      <details key="start" value="703"/>
+      <details key="end" value="718"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateMicroInfos/%/%.15">
+      <details key="start" value="719"/>
+      <details key="end" value="777"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateMicroInfos/%/%.15/select">
+      <details key="start" value="719"/>
+      <details key="end" value="769"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateMicroInfos/%/%.15/select/%">
+      <details key="start" value="719"/>
+      <details key="end" value="730"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateMicroInfos/%/%.15/select/%/aMicro">
+      <details key="start" value="719"/>
+      <details key="end" value="725"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateMicroInfos/%/%.15/select/%.1">
+      <details key="start" value="741"/>
+      <details key="end" value="768"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateMicroInfos/%/%.15/select/%.1/%">
+      <details key="start" value="741"/>
+      <details key="end" value="749"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateMicroInfos/%/%.15/select/%.1/%/p">
+      <details key="start" value="741"/>
+      <details key="end" value="742"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateMicroInfos/%/%.15/select/%.1/%.1">
+      <details key="start" value="752"/>
+      <details key="end" value="768"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateMicroInfos/%/%.15/select/p">
+      <details key="start" value="739"/>
+      <details key="end" value="740"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateMicroInfos/%/%.16">
+      <details key="start" value="779"/>
+      <details key="end" value="794"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateMicroInfos/%/%.17">
+      <details key="start" value="795"/>
+      <details key="end" value="814"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateMicroInfos/%/%.17/%">
+      <details key="start" value="795"/>
+      <details key="end" value="806"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateMicroInfos/%/%.17/%/aMicro">
+      <details key="start" value="795"/>
+      <details key="end" value="801"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateMicroInfos/%/%.18">
+      <details key="start" value="816"/>
+      <details key="end" value="848"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateMicroInfos/%/%.19">
+      <details key="start" value="848"/>
+      <details key="end" value="956"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateMicroInfos/%/%.19/%">
+      <details key="start" value="880"/>
+      <details key="end" value="892"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateMicroInfos/%/%.19/%.1">
+      <details key="start" value="893"/>
+      <details key="end" value="901"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateMicroInfos/%/%.19/%.1/pin">
+      <details key="start" value="893"/>
+      <details key="end" value="896"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateMicroInfos/%/%.19/%.2">
+      <details key="start" value="903"/>
+      <details key="end" value="913"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateMicroInfos/%/%.19/%.3">
+      <details key="start" value="914"/>
+      <details key="end" value="924"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateMicroInfos/%/%.19/%.3/pin">
+      <details key="start" value="914"/>
+      <details key="end" value="917"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateMicroInfos/%/%.19/%.4">
+      <details key="start" value="926"/>
+      <details key="end" value="936"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateMicroInfos/%/%.19/%.5">
+      <details key="start" value="937"/>
+      <details key="end" value="947"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateMicroInfos/%/%.19/%.5/pin">
+      <details key="start" value="937"/>
+      <details key="end" value="940"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateMicroInfos/%/%.19/%.6">
+      <details key="start" value="949"/>
+      <details key="end" value="950"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateMicroInfos/%/%.19/pin">
+      <details key="start" value="854"/>
+      <details key="end" value="863"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateMicroInfos/%/%.19/%.7">
+      <details key="start" value="866"/>
+      <details key="end" value="877"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateMicroInfos/%/%.19/%.7/aMicro">
+      <details key="start" value="866"/>
+      <details key="end" value="872"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateMicroInfos/%/%.20">
+      <details key="start" value="957"/>
+      <details key="end" value="970"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateMicroInfos/%/%.21">
+      <details key="start" value="971"/>
+      <details key="end" value="989"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateMicroInfos/%/%.22">
+      <details key="start" value="991"/>
+      <details key="end" value="992"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateMicroInfos/%/%.23">
+      <details key="start" value="993"/>
+      <details key="end" value="1010"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateMicroInfos/%/%.24">
+      <details key="start" value="1012"/>
+      <details key="end" value="1013"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateMicroInfos/%/%.25">
+      <details key="start" value="1014"/>
+      <details key="end" value="1030"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateMicroInfos/%/%.26">
+      <details key="start" value="1032"/>
+      <details key="end" value="1034"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateMicroInfos/%/%.27">
+      <details key="start" value="192"/>
+      <details key="end" value="241"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateMicroInfos/%/%.27/%">
+      <details key="start" value="192"/>
+      <details key="end" value="223"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateMicroInfos/%/%.27/%/%">
+      <details key="start" value="192"/>
+      <details key="end" value="203"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateMicroInfos/%/%.27/%/%/aMicro">
+      <details key="start" value="192"/>
+      <details key="end" value="198"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateMicroInfos/%/%.27/%/%.1">
+      <details key="start" value="215"/>
+      <details key="end" value="218"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateMicroInfos/%/%.27/%/%.2">
+      <details key="start" value="219"/>
+      <details key="end" value="222"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateMicroInfos/%/%.27/%.1">
+      <details key="start" value="232"/>
+      <details key="end" value="235"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateMicroInfos/%/%.27/%.2">
+      <details key="start" value="237"/>
+      <details key="end" value="240"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateMicroInfos/%/%.28">
+      <details key="start" value="250"/>
+      <details key="end" value="257"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateMicroInfos/aMicro">
+      <details key="start" value="141"/>
+      <details key="end" value="165"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="grafcetModeling" nsURI="http://www.example.org/grafcetModeling"
+    nsPrefix="grafcetModeling">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="G7Element" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" changeable="false"
+        unsettable="true" derived="true" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Grafcet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
+        eType="#//Connection" containment="true" eOpposite="#//Connection/grafcet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
+        eType="#//Transition" containment="true" eOpposite="#//Transition/grafcet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
+        eType="#//Step" containment="true" eOpposite="#//Step/grafcet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//Variable" containment="true" eOpposite="#//Variable/grafcet"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//G7Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isInitial" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isActive" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grafcet" lowerBound="1"
+        eType="#//Grafcet" eOpposite="#//Grafcet/steps"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inConnections" upperBound="-1"
+        eType="#//TransitionToStep"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outConnections" upperBound="-1"
+        eType="#//StepToTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true" eOpposite="#//Action/step"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
+        eType="#//BooleanVariable" eOpposite="#//BooleanVariable/step"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connection" abstract="true" eSuperTypes="#//G7Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grafcet" lowerBound="1"
+        eType="#//Grafcet" eOpposite="#//Grafcet/connections"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//G7Element">
+    <eOperations name="parseReceptivity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionCondition" lowerBound="1"
+        eType="#//Expression" changeable="false" derived="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="receptivity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grafcet" lowerBound="1"
+        eType="#//Grafcet" eOpposite="#//Grafcet/transitions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inConnections" lowerBound="1"
+        upperBound="-1" eType="#//StepToTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outConnections" lowerBound="1"
+        upperBound="-1" eType="#//TransitionToStep"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StepToTransition" eSuperTypes="#//Connection"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionToStep" eSuperTypes="#//Connection"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Action" abstract="true" eSuperTypes="#//G7Element">
+    <eOperations name="parseExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actionExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionVariable" lowerBound="1"
+        eType="#//Variable" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="step" lowerBound="1" eType="#//Step"
+        eOpposite="#//Step/actions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LevelAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressionCondition" lowerBound="1"
+        eType="#//Expression" derived="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StoredAction" eSuperTypes="#//Action">
+    <eOperations name="evaluate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//StoredActionType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressionToEvaluate" lowerBound="1"
+        eType="#//Expression" changeable="false" derived="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFunction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//Function"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariable" eSuperTypes="#//Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="durationMillis" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueOld" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueNew" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="step" lowerBound="1" eType="#//Step"
+        eOpposite="#//Step/variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localId2" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" changeable="false"
+        unsettable="true" derived="true" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//VarType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="grafcet" lowerBound="1"
+        eType="#//Grafcet" eOpposite="#//Grafcet/variables"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NumericVariable" eSuperTypes="#//Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression">
+    <eOperations name="eval"/>
+    <eOperations name="evalOld"/>
+    <eOperations name="parseExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subExpr1" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subExpr2" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="#//Operator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ExpressionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSimple" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boolValue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arithmValue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isConstant" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operator" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TimingOperator" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TimingType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="durationMillis" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LogicOpValues">
+    <eLiterals name="OR"/>
+    <eLiterals name="AND" value="1"/>
+    <eLiterals name="NOT" value="2"/>
+    <eLiterals name="RE" value="3"/>
+    <eLiterals name="FE" value="4"/>
+    <eLiterals name="EQ" value="5"/>
+    <eLiterals name="LE" value="6"/>
+    <eLiterals name="LT" value="7"/>
+    <eLiterals name="GE" value="8"/>
+    <eLiterals name="GT" value="9"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimingType">
+    <eLiterals name="Delayed"/>
+    <eLiterals name="Limited" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VarType">
+    <eLiterals name="Input"/>
+    <eLiterals name="Output" value="1"/>
+    <eLiterals name="Internal" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StoredActionType">
+    <eLiterals name="Activation"/>
+    <eLiterals name="DeActivation" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExpressionType">
+    <eLiterals name="Logic"/>
+    <eLiterals name="Arithmetic" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArithmOpValues">
+    <eLiterals name="PLUS"/>
+    <eLiterals name="MINUS" value="1"/>
+    <eLiterals name="TIMES" value="2"/>
+    <eLiterals name="DIV" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AritmeticOperator" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//ArithmOpValues"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicOperator" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//LogicOpValues"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Function">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

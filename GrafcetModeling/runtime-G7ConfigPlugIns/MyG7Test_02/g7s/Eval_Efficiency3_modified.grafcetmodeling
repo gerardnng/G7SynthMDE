@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grafcetModeling:Grafcet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grafcetModeling="http://www.example.org/grafcetModeling" name="Eval Efficiency3 Modified">
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y1"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y2"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y3"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y4"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y5"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y6"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z1"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z2"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z3"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z4"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z5"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z6"/>
+  <transitions name="t1" receptivity="[4200ms/X6 and local_tmp>0]" inConnections="//@connections.0" outConnections="//@connections.6"/>
+  <transitions name="t2" receptivity="X5 or FE door_opened" inConnections="//@connections.1" outConnections="//@connections.7"/>
+  <transitions name="t3" receptivity="X4" inConnections="//@connections.2" outConnections="//@connections.8"/>
+  <transitions name="t4" receptivity="X5 or RE (boo1 and boo2)" inConnections="//@connections.3" outConnections="//@connections.9"/>
+  <transitions name="t5" receptivity="[not 25m/X4]" inConnections="//@connections.4" outConnections="//@connections.10"/>
+  <transitions name="t6" receptivity="[not 15s/X5 or [8s/boo1 and not boo2] ] and RE(temperature_in>(29+N*2))" inConnections="//@connections.5" outConnections="//@connections.11"/>
+  <steps name="1" isInitial="true" inConnections="//@connections.6" outConnections="//@connections.1" variable="//@variables.0">
+    <actions xsi:type="grafcetModeling:StoredAction" name="N" actionVariable="//@variables.9" storedExpression="0"/>
+    <actions xsi:type="grafcetModeling:LevelAction" name="A" actionVariable="//@variables.12" condition="temperature_in>15 or FE (boo1 or boo2)"/>
+    <actions xsi:type="grafcetModeling:StoredAction" name="local_tmp" actionVariable="//@variables.10" storedExpression="local_tmp*10-25"/>
+    <actions xsi:type="grafcetModeling:StoredAction" name="boo1" actionVariable="//@variables.1" storedExpression="true"/>
+    <actions xsi:type="grafcetModeling:StoredAction" name="boo2" actionVariable="//@variables.2" moment="DeActivation" storedExpression="false"/>
+    <actions xsi:type="grafcetModeling:StoredAction" name="vv" actionVariable="//@variables.16" moment="DeActivation" storedExpression="RE X1 or not (local_temp+8&lt;25)"/>
+  </steps>
+  <steps name="2" inConnections="//@connections.7" outConnections="//@connections.2" variable="//@variables.3">
+    <actions xsi:type="grafcetModeling:LevelAction" name="B" actionVariable="//@variables.13" condition="true"/>
+  </steps>
+  <steps name="3" inConnections="//@connections.8" outConnections="//@connections.3" variable="//@variables.5">
+    <actions xsi:type="grafcetModeling:LevelAction" name="C" actionVariable="//@variables.14" condition="true"/>
+  </steps>
+  <steps name="4" isInitial="true" inConnections="//@connections.11" outConnections="//@connections.4" variable="//@variables.6">
+    <actions xsi:type="grafcetModeling:LevelAction" name="D" actionVariable="//@variables.15" condition="true"/>
+    <actions xsi:type="grafcetModeling:LevelAction" name="E" actionVariable="//@variables.17" condition="true"/>
+  </steps>
+  <steps name="5" inConnections="//@connections.10" outConnections="//@connections.5" variable="//@variables.7">
+    <actions xsi:type="grafcetModeling:LevelAction" name="F" actionVariable="//@variables.18" condition="true"/>
+    <actions xsi:type="grafcetModeling:LevelAction" name="G" actionVariable="//@variables.19" condition="true"/>
+    <actions xsi:type="grafcetModeling:StoredAction" name="N" actionVariable="//@variables.9" storedExpression="N+1 "/>
+    <actions xsi:type="grafcetModeling:StoredAction" name="tmp" actionVariable="//@variables.20" storedExpression="tmp+1"/>
+  </steps>
+  <steps name="6" inConnections="//@connections.9" outConnections="//@connections.0" variable="//@variables.8">
+    <actions xsi:type="grafcetModeling:LevelAction" name="M" actionVariable="//@variables.21" condition="RE (boo1 and boo2)"/>
+    <actions xsi:type="grafcetModeling:StoredAction" name="activerVanne" actionVariable="//@variables.21">
+      <function name="readVanneState" body="int state = digitalRead(0);"/>
+    </actions>
+    <actions xsi:type="grafcetModeling:StoredAction" name="N" actionVariable="//@variables.9" storedExpression="N+1 "/>
+  </steps>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X1" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="boo1" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="boo2" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X2" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="door_opened"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X3" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X4" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X5" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X6" type="Internal"/>
+  <variables xsi:type="grafcetModeling:NumericVariable" name="N" type="Output"/>
+  <variables xsi:type="grafcetModeling:NumericVariable" name="local_tmp" type="Internal"/>
+  <variables xsi:type="grafcetModeling:NumericVariable" name="temperature_in"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="A" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="B" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="C" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="D" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="vv" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="E" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="F" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="G" type="Output"/>
+  <variables xsi:type="grafcetModeling:NumericVariable" name="tmp" type="Output"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="M" type="Output"/>
+</grafcetModeling:Grafcet>

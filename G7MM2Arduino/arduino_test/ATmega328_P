@@ -1,0 +1,41 @@
+
+//For the microcontroller 
+Micro Name : ATmega328/P
+Micro family : High Performance, Low Power Atmel AVR 8-Bit Microcontroller
+Micro manufacturer : Atmel
+
+Frequency : 20 Mhz
+
+Microcontroller has main : false
+
+-----------------------------
+Digital pins 	: 14 
+Analog pins 	: 6
+-- Pins Total 	: 20
+
+PIN: name = PD0		number= 0		Nature: Digital
+PIN: name = PD1		number= 1		Nature: Digital
+PIN: name = PD2		number= 2		Nature: Digital
+PIN: name = PD3		number= 3		Nature: Digital
+PIN: name = PD4		number= 4		Nature: Digital
+PIN: name = PD5		number= 5		Nature: Digital
+PIN: name = PD6		number= 6		Nature: Digital
+PIN: name = PD7		number= 7		Nature: Digital
+PIN: name = PB0		number= 8		Nature: Digital
+PIN: name = PB1		number= 9		Nature: Digital
+PIN: name = PB2		number= 10		Nature: Digital
+PIN: name = PB3		number= 11		Nature: Digital
+PIN: name = PB4		number= 12		Nature: Digital
+PIN: name = PB5		number= 13		Nature: Digital
+PIN: name = PC0		number= 23		Nature: Analog
+PIN: name = PC1		number= 24		Nature: Analog
+PIN: name = PC2		number= 25		Nature: Analog
+PIN: name = PC3		number= 26		Nature: Analog
+PIN: name = PC4		number= 27		Nature: Analog
+PIN: name = PC5		number= 28		Nature: Analog
+
+Pin natures
+Digital
+Analog
+Mixed
+

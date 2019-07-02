@@ -1,0 +1,13 @@
+[comment encoding = Cp1252 /]
+[**
+ * The documentation of the module.
+ */]
+[module genG7Services('http://www.eclipse.org/uml2/5.0.0/UML')/]
+
+[**
+ * The documentation of the query
+ */]
+[query public getTime(anOclAny: OclAny) : String
+	= invoke('G7MMToCode.main.Informations', 'getTime()', Sequence{})
+/]
+

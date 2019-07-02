@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MyG7Test_02/bomo.grafcetmodeling&apos; to &apos;g7_case_stud_thesis.grafcetmodeling&apos;" description="Rename resource &apos;bomo.grafcetmodeling&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="bomo.grafcetmodeling" name="g7_case_stud_thesis.grafcetmodeling" stamp="1550496266280" updateReferences="true"/>
+</session>

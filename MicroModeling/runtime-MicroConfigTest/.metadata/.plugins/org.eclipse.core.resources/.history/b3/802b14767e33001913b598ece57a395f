@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MicrocontrollerModeling:Microcontroller xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MicrocontrollerModeling="http://www.example.org/microcontrollermodeling" name="Atmega1280" family="Atmel AVR 8-Bit" manufacturer="Atmel">
+  <pins name="PA0" nature="Mixed"/>
+  <pins name="PA1" nature="Mixed" number="1"/>
+  <pins name="PA2" nature="Mixed" number="2"/>
+  <pins name="PA3" nature="Mixed" number="3"/>
+  <pins name="PA4" nature="Mixed" number="4"/>
+  <pins name="PA5" nature="Mixed" number="5"/>
+  <pins name="PA6" nature="Mixed" number="6"/>
+  <pins name="PA7" nature="Mixed" number="7"/>
+  <pins name="PB0" nature="Mixed" number="1"/>
+  <pins name="PB1" nature="Mixed" number="1"/>
+  <pins name="PB2" nature="Mixed" number="2"/>
+  <pins name="PB3" nature="Mixed" number="3"/>
+  <pins name="PB4" nature="Mixed" number="4"/>
+  <pins name="PB5" nature="Mixed" number="5"/>
+  <pins name="PB6" nature="Mixed" number="6"/>
+  <pins name="PB7" nature="Mixed" number="7"/>
+  <pins name="PC0" nature="Mixed" number="1"/>
+  <pins name="PC1" nature="Mixed" number="1"/>
+  <pins name="PC2" nature="Mixed" number="2"/>
+  <pins name="PC3" nature="Mixed" number="3"/>
+  <pins name="PC4" nature="Mixed" number="4"/>
+  <pins name="PC5" nature="Mixed" number="5"/>
+  <pins name="PC6" nature="Mixed" number="6"/>
+  <pins name="PC7" nature="Mixed" number="7"/>
+  <pins name="PD0" nature="Mixed" number="1"/>
+  <pins name="PD1" nature="Mixed" number="1"/>
+  <pins name="PD2" nature="Mixed" number="2"/>
+  <pins name="PD3" nature="Mixed" number="3"/>
+  <pins name="PD4" nature="Mixed" number="4"/>
+  <pins name="PD5" nature="Mixed" number="5"/>
+  <pins name="PD6" nature="Mixed" number="6"/>
+  <pins name="PD7" nature="Mixed" number="7"/>
+  <pins name="PE0" nature="Mixed" number="1"/>
+  <pins name="PE1" nature="Mixed" number="1"/>
+  <pins name="PE2" nature="Mixed" number="2"/>
+  <pins name="PE3" nature="Mixed" number="3"/>
+  <pins name="PE4" nature="Mixed" number="4"/>
+  <pins name="PE5" nature="Mixed" number="5"/>
+  <pins name="PE6" nature="Mixed" number="6"/>
+  <pins name="PE7" nature="Mixed" number="7"/>
+  <pins name="PF0" nature="Mixed" number="1"/>
+  <pins name="PF1" nature="Mixed" number="1"/>
+  <pins name="PF2" nature="Mixed" number="2"/>
+  <pins name="PF3" nature="Mixed" number="3"/>
+  <pins name="PF4" nature="Mixed" number="4"/>
+  <pins name="PF5" nature="Mixed" number="5"/>
+  <pins name="PF6" nature="Mixed" number="6"/>
+  <pins name="PF7" nature="Mixed" number="7"/>
+  <pins name="PG0" nature="Mixed" number="1"/>
+  <pins name="PG1" nature="Mixed" number="1"/>
+  <pins name="PG2" nature="Mixed" number="2"/>
+  <pins name="PG3" nature="Mixed" number="3"/>
+  <pins name="PG4" nature="Mixed" number="4"/>
+  <pins name="PG5" nature="Mixed" number="5"/>
+  <pins name="PH0" nature="Mixed"/>
+  <pins name="PH1" nature="Mixed" number="1"/>
+  <pins name="PH2" nature="Mixed" number="2"/>
+  <pins name="PH3" nature="Mixed" number="3"/>
+  <pins name="PH4" nature="Mixed" number="4"/>
+  <pins name="PH5" nature="Mixed" number="5"/>
+  <pins name="PH6" nature="Mixed" number="6"/>
+  <pins name="PH7" nature="Mixed" number="7"/>
+  <pins name="PJ0" nature="Mixed"/>
+  <pins name="PJ1" nature="Mixed" number="1"/>
+  <pins name="PJ2" nature="Mixed" number="2"/>
+  <pins name="PJ3" nature="Mixed" number="3"/>
+  <pins name="PJ4" nature="Mixed" number="4"/>
+  <pins name="PJ5" nature="Mixed" number="5"/>
+  <pins name="PJ6" nature="Mixed" number="6"/>
+  <pins name="PJ7" nature="Mixed" number="7"/>
+  <pins name="PK0" nature="Mixed"/>
+  <pins name="PK1" nature="Mixed" number="1"/>
+  <pins name="PK2" nature="Mixed" number="2"/>
+  <pins name="PK3" nature="Mixed" number="3"/>
+  <pins name="PK4" nature="Mixed" number="4"/>
+  <pins name="PK5" nature="Mixed" number="5"/>
+  <pins name="PK6" nature="Mixed" number="6"/>
+  <pins name="PK7" nature="Mixed" number="7"/>
+  <pins name="PL0" nature="Mixed"/>
+  <pins name="PL1" nature="Mixed" number="1"/>
+  <pins name="PL2" nature="Mixed" number="2"/>
+  <pins name="PL3" nature="Mixed" number="3"/>
+  <pins name="PL4" nature="Mixed" number="4"/>
+  <pins name="PL5" nature="Mixed" number="5"/>
+  <pins name="PL6" nature="Mixed" number="6"/>
+  <pins name="PL7" nature="Mixed" number="7"/>
+  <clanguage name="Arduino">
+    <libraries name="TimerOne.h"/>
+    <timerconfig type="void" period="100">
+      <instructions value="Timer1.initialize(1000000/(1000/TIMER_PERIOD))"/>
+      <instructions value="Timer1.attachInterrupt(update_G7TimingVars_callback)"/>
+    </timerconfig>
+    <pinmode value="INPUT"/>
+    <pinmode name="Output" value="OUTPUT"/>
+    <pinoperation type="void" name="pinConfigMode">
+      <parameters name="pin_num" type="int"/>
+      <parameters name="mode" type="int"/>
+      <instructions value="pinMode(pin_num, mode)"/>
+    </pinoperation>
+    <pinoperation type="int">
+      <parameters name="pin_num" type="int"/>
+      <instructions value="return digitalRead(pin_num)"/>
+    </pinoperation>
+    <pinoperation type="void" name="digitalPinWrite">
+      <parameters name="pin_num" type="int"/>
+      <parameters name="value" type="int"/>
+      <instructions value="digitalWrite(pin_num, value)"/>
+    </pinoperation>
+    <pinoperation type="int" name="analogPinRead">
+      <parameters name="pin_num" type="int"/>
+      <instructions value="return analogRead(pin_num)"/>
+    </pinoperation>
+    <pinoperation type="void" name="analogPinWrite">
+      <parameters name="pin_num" type="int"/>
+      <parameters name="value" type="int"/>
+      <instructions value="analogWrite(pin_num, value)"/>
+    </pinoperation>
+  </clanguage>
+  <processor unit="MIPS" speed="16"/>
+  <rom xsi:type="MicrocontrollerModeling:EEPROM" unit="Ko" size="1"/>
+  <flash unit="Ko" size="32"/>
+  <ram unit="Ko" size="2"/>
+</MicrocontrollerModeling:Microcontroller>

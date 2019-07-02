@@ -1,0 +1,35 @@
+[comment encoding = UTF-8 /]
+[module microGenerator('http://www.example.org/microcontrollermodeling')]
+
+
+[template public generateMicroInfos(aMicro : Microcontroller)]
+[comment @main/]
+[file (aMicro.name.replaceAll(' ','_').replace('/', '_'), false, 'UTF-8')] 
+
+//For the microcontroller 
+Micro Name : [aMicro.name/]
+Micro family : [aMicro.family/]
+Micro manufacturer : [aMicro.manufacturer/]
+
+Frequency : [aMicro.processor.speed/] [aMicro.processor.unit/]
+
+Microcontroller has main : [aMicro.clanguage.hasMain/]
+
+---------------PINS--------------
+Digital pins: [aMicro.pins->select(p|p.nature = PinNature::Digital)->size()/] 
+Analog pins : [aMicro.pins->select(p|p.nature = PinNature::Analog)->size()/]
+Mixed pins 	: [aMicro.pins->select(p|p.nature = PinNature::Mixed)->size()/]
+- Total     : [aMicro.pins->size()/]
+-----------------------------
+
+[for (pin : Pin | aMicro.pins)]
+PIN: name = [pin.name/]		number= [pin.number/]		Nature: [pin.nature/]
+[/for]
+
+Pin natures
+[PinNature::Digital/]
+[PinNature::Analog/]
+[PinNature::Mixed/]
+
+[/file]
+[/template]

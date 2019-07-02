@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grafcetModeling:Grafcet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grafcetModeling="http://www.example.org/grafcetModeling" name="Notre Grafcet de Test 2">
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y1"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y3"/>
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y2"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z1"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z2"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z3"/>
+  <transitions name="t1" receptivity="X_ss1 and not b or X_ss2 and RE (n1 &lt; 5 or n2>=10) or RE (a and b)" inConnections="//@connections.0" outConnections="//@connections.3">
+    <transitionCondition name="((((X_ss1 and (not b)) or X_ss2) and (RE ((n1 &lt; 5) or (n2 >= 10)))) or (RE (a and b)))">
+      <subExpr1 name="(((X_ss1 and (not b)) or X_ss2) and (RE ((n1 &lt; 5) or (n2 >= 10))))">
+        <subExpr1 name="((X_ss1 and (not b)) or X_ss2)">
+          <subExpr1 name="(X_ss1 and (not b))">
+            <subExpr1 isSimple="true" name="X_ss1" variable="//@variables.4"/>
+            <subExpr2 name="(not b)">
+              <subExpr2 isSimple="true" name="b" variable="//@variables.6"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+            </subExpr2>
+            <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+          </subExpr1>
+          <subExpr2 isSimple="true" name="X_ss2" variable="//@variables.5"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator"/>
+        </subExpr1>
+        <subExpr2 name="(RE ((n1 &lt; 5) or (n2 >= 10)))">
+          <subExpr2 name="((n1 &lt; 5) or (n2 >= 10))">
+            <subExpr1 name="(n1 &lt; 5)">
+              <subExpr1 type="Arithmetic" isSimple="true" name="n1" variable="//@variables.1"/>
+              <subExpr2 type="Arithmetic" isSimple="true" name="5" arithmValue="5" isConstant="true"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="LT"/>
+            </subExpr1>
+            <subExpr2 name="(n2 >= 10)">
+              <subExpr1 type="Arithmetic" isSimple="true" name="n2" variable="//@variables.2"/>
+              <subExpr2 type="Arithmetic" isSimple="true" name="10" arithmValue="10" isConstant="true"/>
+              <operator xsi:type="grafcetModeling:LogicalOperator" name="GE"/>
+            </subExpr2>
+            <operator xsi:type="grafcetModeling:LogicalOperator"/>
+          </subExpr2>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="RE"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 name="(RE (a and b))">
+        <subExpr2 name="(a and b)">
+          <subExpr1 isSimple="true" name="a" variable="//@variables.0"/>
+          <subExpr2 isSimple="true" name="b" variable="//@variables.6"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="RE"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="t2" receptivity="a and RE b or  (n1>25)" inConnections="//@connections.2" outConnections="//@connections.4">
+    <transitionCondition name="((a and (RE b)) or (n1 > 25))">
+      <subExpr1 name="(a and (RE b))">
+        <subExpr1 isSimple="true" name="a" variable="//@variables.0"/>
+        <subExpr2 name="(RE b)">
+          <subExpr2 isSimple="true" name="b" variable="//@variables.6"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="RE"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 name="(n1 > 25)">
+        <subExpr1 type="Arithmetic" isSimple="true" name="n1" variable="//@variables.1"/>
+        <subExpr2 type="Arithmetic" isSimple="true" name="25" arithmValue="25" isConstant="true"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="GT"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <transitions name="t3" receptivity="n1>10 and (a or not b)" inConnections="//@connections.1" outConnections="//@connections.5">
+    <transitionCondition name="((n1 > 10) and (a or (not b)))">
+      <subExpr1 name="(n1 > 10)">
+        <subExpr1 type="Arithmetic" isSimple="true" name="n1" variable="//@variables.1"/>
+        <subExpr2 type="Arithmetic" isSimple="true" name="10" arithmValue="10" isConstant="true"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="GT"/>
+      </subExpr1>
+      <subExpr2 name="(a or (not b))">
+        <subExpr1 isSimple="true" name="a" variable="//@variables.0"/>
+        <subExpr2 name="(not b)">
+          <subExpr2 isSimple="true" name="b" variable="//@variables.6"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="NOT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+    </transitionCondition>
+  </transitions>
+  <steps name="ss1" isInitial="true" inConnections="//@connections.3" outConnections="//@connections.0 //@connections.1" variable="//@variables.4"/>
+  <steps name="ss2" inConnections="//@connections.4 //@connections.5" outConnections="//@connections.2" variable="//@variables.5"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="a"/>
+  <variables xsi:type="grafcetModeling:NumericVariable" name="n1"/>
+  <variables xsi:type="grafcetModeling:NumericVariable" name="n2"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="c"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X_ss1" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X_ss2" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="b"/>
+</grafcetModeling:Grafcet>

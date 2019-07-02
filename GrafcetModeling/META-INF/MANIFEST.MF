@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: GrafcetModeling;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .,
+ lib\antlr-4.7.1-complete.jar
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: grafcetmodeling.model.grafcetModeling,
+ grafcetmodeling.model.grafcetModeling.impl,
+ grafcetmodeling.model.grafcetModeling.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ GrafcetModeling;visibility:=reexport
+Bundle-ActivationPolicy: lazy

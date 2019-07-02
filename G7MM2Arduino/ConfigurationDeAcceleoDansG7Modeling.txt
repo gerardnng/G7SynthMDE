@@ -1,0 +1,45 @@
+Précédure décrite dans : https://profesores.virtual.uniandes.edu.co/~isis4712/dokuwiki/doku.php?id=tutorial:petrinet2text
+
+
+Pour réussir à réaliser les transformations, il a fallu :
+
+1)
+Lors de la création ddu projet, spécifier que le métamodèle 
+	* après avoir coché le bouton <Runtime Version> de la fenêtre qui s'ouvre lorsqu'on veut ajouter une URI d'un métamodèle 
+	* écrit l'URI du métamodèle Grafcet : http://www.example.org/grafcetModeling 
+
+2) Ouvrir le manifeste 
+	et ajouter la dépendance au projet <GrafcetModeling> du même workspace
+
+
+3) Faire les modifications suivantes sur les codes java générés dans la classe principale <GenerateG7ToArduino >
+
+a) Dans registerPackages(ResourceSet resourceSet)
+
+* @generated NOT
+     */
+    @Override
+    public void registerPackages(ResourceSet resourceSet) {
+        super.registerPackages(resourceSet);
+        
+
+        //NNG
+        resourceSet.getPackageRegistry().put("/GrafcetModeling/model/grafcetModeling.ecore", GrafcetModelingPackage.eINSTANCE);
+        
+....
+}
+
+b) Dans registerResourceFactories(ResourceSet resourceSet)
+
+ * @generated NOT
+     */
+    @Override
+    public void registerResourceFactories(ResourceSet resourceSet) {
+        super.registerResourceFactories(resourceSet);
+        
+        //NNG
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("grafcetmodeling", new XMIResourceFactoryImpl());
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
+        
+...
+}

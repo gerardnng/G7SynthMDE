@@ -1,0 +1,100 @@
+
+
+[for (var : Variable | ag7.variables->select(v| v.oclIsTypeOf(BooleanVariable)))]
+[if (var.type = VarType::Input)]
+
+[/if]
+[/for]
+
+
+To have BooleanVariable amoung variables
+[if(g7.variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Output)->size()>0)]
+//**** 	 Declare BOOLEAN OUTPUT pins states	**** Total : [g7.variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Output)->size()/]
+[for (var : Variable | g7.variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Output))]
+boolean [var.name/] = false, [var.name/]_old = false ;
+[/for]
+[/if]
+
+////////////////////////////////A revoir .............
+
+
+
+[template public generate_declareLIMITED_TimingVariables(g7 : Grafcet)]
+[if (g7.hasTimeConditions())]
+[if (g7.transitions->size()>0)]
+//Declare Variables for duration of Limited timing variables
+[for (trans : Transition | g7.transitions)]
+[let op : Operator = trans.transitionCondition.operator]
+[if (op.oclIsTypeOf(TimingOperator))]
+[if (op->oclAsType(TimingOperator).type = TimingType::Limited)]
+unsigned long [trans.transitionCondition.getName2()/]_duration = 0;
+[/if]
+[/if]
+[/let]
+[/for]
+[/if]
+[if (g7.steps->size()>0)]
+[for (step : Step | g7.steps)]
+[for (l_action : LevelAction | step.actions->filter(LevelAction))]
+[let op : Operator = l_action.expressionCondition.operator]
+[if (op.oclIsTypeOf(TimingOperator))]
+[if (op->oclAsType(TimingOperator).type = TimingType::Limited)]
+unsigned long [l_action.expressionCondition.getName2()/]_duration = 0;
+[/if]
+[/if]
+[/let]
+[/for]
+[/for]
+[/if]
+[/if]
+[/template]
+
+
+
+
+
+
+[template public generate_update_variables_TimingOperators(g7 : Grafcet)]
+[comment] This concerns only Timing Expression of Level 1. It should be extended to subexpressions [/comment]
+Nothing !!!!
+[if (g7.hasTimeConditions())]
+[if (g7.transitions->size()>0)]
+//Declare Variables for duration of Limited timing variables
+[for (trans : Transition | g7.transitions)]
+[if (trans.transitionCondition.operator.oclIsTypeOf(TimingOperator))]
+
+unsigned long [trans.transitionCondition.getName2()/]_duration = 0;
+[/if]
+[/for]
+[/if]
+[if (g7.steps->size()>0)]
+[for (step : Step | g7.steps)]
+[for (l_action : LevelAction | step.actions->filter(LevelAction))]
+[if (l_action.expressionCondition.operator.oclIsTypeOf(TimingOperator))]
+unsigned long [l_action.expressionCondition.getName2()/]_duration = 0;
+[/if]
+[/for]
+[/for]
+[/if]
+[/if]
+[/template]
+
+[template public generate_pinsConfigurations(g7 : Grafcet)]
+[if(g7.variables->select(v: Variable|v.type = VarType::Input)->size()>0)]
+	//INPUT PINs Configuration
+[for (var : Variable | g7.variables)]
+[if (var.type = VarType::Input)]
+	pinMode(pin_[var.name/], INPUT);
+[/if]
+[/for]
+[/if]
+
+[if(g7.variables->select(v: Variable|v.type = VarType::Output)->size()>0)]
+	//OUTPUT PINs Configuration
+[for (var : Variable | g7.variables)]
+[if (var.type = VarType::Output)]
+	pinMode(pin_[var.name/], OUTPUT);
+[/if]
+[/for]
+[/if]
+[/template]

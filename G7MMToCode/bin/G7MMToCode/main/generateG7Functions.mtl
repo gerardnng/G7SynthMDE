@@ -1,0 +1,262 @@
+[comment encoding = UTF-8 /]
+[module generateG7Functions('http://www.example.org/grafcetModeling')]
+
+[template public generate_pinsConfigurations(g7 : Grafcet)]
+[if(g7.variables->select(v: Variable|v.type = VarType::Input)->size()>0)]
+	//INPUT PINs Configuration
+[for (var : Variable | g7.variables)]
+[if (var.type = VarType::Input)]
+	pinConfigMode(pin_[var.name/], InputMode);
+[/if]
+[/for]
+[/if]
+
+[if(g7.variables->select(v: Variable|v.type = VarType::Output)->size()>0)]
+	//OUTPUT PINs Configuration
+[for (var : Variable | g7.variables)]
+[if (var.type = VarType::Output)]
+	pinConfigMode(pin_[var.name/], OutputMode);
+[/if]
+[/for]
+[/if]
+[/template]
+
+[template public generate_InitializeInitialStepsVariables(g7_steps : Set(Step))]
+[if (g7_steps->size()>0)]
+	//Inital steps activity variables initialization
+[for (step : Step | g7_steps)]
+[if (step.isInitial)]
+	[step.variable.name/]_Old = true; //[step.variable.name/] = true; //But not necessary
+[/if]
+[/for]
+[/if]
+[/template]
+
+[template public generate_validatedTransitions_EvalStr(g7 : Grafcet)]
+[if (g7.transitions->size()>0)]
+	//Evaluate validated transitions (variables)
+[for (trans : Transition | g7.transitions)]
+	VT_[trans.name/] = [for (step : Step | trans.inSteps) separator (' && ') after (';')] [step.variable.name/]_Old [/for]
+[/for]
+[/if]
+[/template]
+
+[template public generate_receptivities_EvalStr(g7 : Grafcet)]
+[if (g7.transitions->size()>0)]
+	//Evaluate Receptivities of transitions
+[for (trans : Transition | g7.transitions)]
+	R_[trans.name/] = (VT_[trans.name/])? [trans.transitionCondition.getCExpr()/]: false ; 
+[/for]
+[/if]
+[/template]
+
+[template public generate_firingTransitions_EvalStr(g7 : Grafcet)]
+[if (g7.transitions->size()>0)]
+	//Evaluate Clearing/firing transitions conditions
+[for (trans : Transition | g7.transitions)]
+	FT_[trans.name/] = VT_[trans.name/] && R_[trans.name/];
+	[comment]if(FT_[trans.name/]) {transitions_fired = true;}[/comment]
+[/for]
+[/if]
+[/template]
+
+[template public generate_evaluation_if_any_transitions_fired(transitions : Set(Transition))]
+[if (transitions->size()>0)]
+	//Calculation if there is any transition fired : 2nd alternative
+	transitions_fired = [for (trans : Transition | transitions) separator (' || ') after (';')] FT_[trans.name/] [/for]
+[/if]
+[/template]
+
+
+[template public evaluate_NextStepsActivity_variables(g7 : Grafcet)]
+[if (g7.steps->size()>0)]
+	//Evaluate steps activity variables
+[for (step : Step | g7.steps)]
+	[step.variable.name/] = [for (trans : Transition | step.inTransitions) separator (' || ') after(' || ')]FT_[trans.name/][/for]([step.variable.name/]_Old [for (trans : Transition | step.inTransitions) before ('&& ') separator (' && ') ]! R_[trans.name/][/for]);
+[/for]
+[/if]
+[/template]
+
+[template public generate_ResetDigitalOutput_variables(g7 : Grafcet)]
+[let g7_levelActionsVariables : OrderedSet(Variable) = g7.steps.actions->filter(LevelAction).actionVariable->asOrderedSet()]
+[if (g7_levelActionsVariables->size()>0)]
+	//Reinitialize all the Digital Output variables
+[for(l_action : Variable | g7_levelActionsVariables)]
+	[l_action.name/] = false;
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_EvalDigitalOutput_variables(g7 : Grafcet)]
+[if (g7.steps.actions->filter(LevelAction)->size()>0)]
+	//Evaluate Digital OUTPUTs variables : [g7.steps.actions->filter(LevelAction)->size()/]
+	if(transitions_fired == false){
+[for (step : Step | g7.steps)]
+[if (step.actions->filter(LevelAction)->size()>0)]
+		//Evaluate Level Actions Associated to Step [step.name/] : [step.actions->filter(LevelAction)->size()/]
+[for(l_action : LevelAction | step.actions->filter(LevelAction))]
+		if([step.variable.name/]){ if ([l_action.expressionCondition.getCExpr()/]) {[l_action.name/] = true;}}
+[/for]
+
+[/if]
+[/for]
+	}
+[/if]
+[/template]
+
+[template public generate_EvalAnalogOutput_variables(g7 : Grafcet)]
+[if (g7.steps->size()>0)]
+	//Evaluate Analog/Stored OUTPUTs variables
+[for (step : Step | g7.steps)]
+[if (step.actions->filter(StoredAction)->size()>0)]
+	//Evaluate Stored Actions Associated to Step [step.name/]
+[for(st_action : StoredAction | step.actions->filter(StoredAction))]
+[generate_StoredAction(step, st_action)/]
+[/for]
+[/if]
+[/for]
+[/if]
+[/template]
+
+[template public generate_StoredAction(step: Step, action : StoredAction)]
+[if (action.moment = StoredMoment::Activation)]
+	//Step [step.name/]: Action [action.name/] On Activation
+	if([step.variable.name/]_Old == false && [step.variable.name/] == true){
+[else] [comment]The stored action is realized on desactivation[/comment]
+	//Step [step.name/]: Action [action.name/] On Desactivation
+	if([step.variable.name/]_Old == true && [step.variable.name/] == false){
+[/if]
+[if(action.function <>null)] [comment]The corresponding stored action can be a function[/comment]
+		[action.function.name/](); //function for stored action
+[else]
+		[action.actionVariable.name/] = [action.expressionToEvaluate.getCExpr()/];
+[/if]
+	}
+
+[/template]
+
+[template public generate_SaveOldIOPinsStates_Variables(variables : Set(Variable))]
+[let inBoolVariables : Set(BooleanVariable) = variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Input)]
+[if(inBoolVariables->size()>0)]
+	// SAVE DIGITAL INPUT pins states/variables
+[for (var : Variable | inBoolVariables)]
+	[var.name/]_Old = [var.name/] ;
+[/for]
+[/if]
+[/let]
+
+[let outBoolVariables : Set(BooleanVariable) = variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Output)]
+[if(outBoolVariables->size()>0)]
+	// SAVE DIGITAL OUTPUT pins states/variables
+[for (var : Variable | outBoolVariables)]
+	[var.name/]_Old = [var.name/] ;
+[/for]
+[/if]
+[/let]
+
+[let inNumericVariables : Set(NumericVariable) = variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Input)]
+[if(inNumericVariables->size()>0)]
+	// SAVE ANALOG INPUT pins states/variables
+[for (var : Variable | inNumericVariables)]
+	[var.name/]_Old = [var.name/] ;
+[/for]
+[/if]
+[/let]
+
+[let outNumericVariables : Set(NumericVariable) = variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Output)]
+[if(outNumericVariables->size()>0)]
+	// SAVE ANALOG OUTPUT pins states/variables
+[for (var : Variable | outNumericVariables)]
+	[var.name/]_Old = [var.name/] ;
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_SaveOldInternalStates_Variables(variables : Set(Variable))]
+[let boolInternalVariables : OrderedSet(BooleanVariable) = variables->filter(BooleanVariable)->select(v:BooleanVariable | v.type = VarType::Internal)->asOrderedSet()]
+[if(boolInternalVariables->size()>0)]
+	// UPDATE Old BOOLEAN Internal variables (With steps activity)
+[for (var : Variable | boolInternalVariables)]
+	[var.name/]_Old = [var.name/];
+[/for]
+[/if]
+[/let]
+
+[let numInternalVariables : OrderedSet(NumericVariable) = variables->filter(NumericVariable)->select(v:NumericVariable | v.type = VarType::Internal)->asOrderedSet()]
+[if(numInternalVariables->size()>0)]
+	// UPDATE Old NUMERICAL Internal variables	
+[for (var : Variable | numInternalVariables)]
+	[var.name/]_Old = [var.name/];
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_Update_ActivityDuration_OtherBooleanVariables(g7 : Grafcet)]
+[let otherBoolVars: OrderedSet(BooleanVariable) = g7.variables->filter(BooleanVariable)->symmetricDifference(g7.steps.variable->asSet())->asOrderedSet()]
+[if (otherBoolVars->size()>0)]
+	//Updating activity duration of other Boolean Variables of the Grafcet. Size = [otherBoolVars->size()/]
+[for (bVar : BooleanVariable | otherBoolVars)]
+	if([bVar.name/]_Old == true && [bVar.name/] == false){
+		[bVar.name/]_duration = 0;
+	}else if([bVar.name/] == true){
+		[bVar.name/]_duration ++;
+	}
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_Update_ExpressionsTimingVariables_duration(g7 : Grafcet)]
+[let timingVariablesExpr: OrderedSet(Expression) = g7.getTimeExprs()->asOrderedSet()]
+[if (timingVariablesExpr->size()>0)]
+	[comment] This concerns only Timing Expression of any level Level.[/comment]
+	//Updating activity duration of other Boolean Variables of Grafcet Timing Expressions. Size = [timingVariablesExpr->size()/]
+	boolean b_old, b_new;
+[for (expr : Expression | timingVariablesExpr)]
+	//For [expr.name/]
+[if(expr.operator.oclAsType(TimingOperator).type = TimingType::Delayed2)]
+	b_old = [expr.subExpr2.getOldCExpr()/];
+	b_new = [expr.subExpr2.getCExpr()/];
+	if((b_old == false && b_new == true) or (b_old == true && b_new == false)){
+		[expr.getName2()/]_duration = 0;
+	}
+	else{
+		[expr.getName2()/]_duration ++;
+	}
+[else]
+[if (not expr.subExpr2.isSimple)]
+	//if FE [expr.name/]
+	if([expr.subExpr2.getOldCExpr()/] == true && ! [expr.subExpr2.getCExpr()/] == false){
+		[expr.getName2()/]_duration = 0;
+	}
+	if([expr.subExpr2.getCExpr()/] == true){
+		[expr.getName2()/]_duration ++;
+	}
+[/if]
+[/if]
+[/for]
+[/if]
+[/let]
+[/template]
+
+[template public generate_Save_OldTimingVariables_duration(g7 : Grafcet)]
+	//Updating old timing Variables of any Grafcet Boolean variable : [g7.variables->filter(BooleanVariable)->size()/]
+[for (var : BooleanVariable | g7.variables->filter(BooleanVariable))]
+	[var.name/]_duration_Old = [var.name/]_duration;
+[/for]
+
+[let timingVariablesExpr: OrderedSet(Expression) = g7.getTimeExprs()->asOrderedSet()]
+[if (timingVariablesExpr->size()>0)]
+	//Updating old timing Variables of the Grafcet Expressions : [timingVariablesExpr->size()/]
+[for (expr : Expression | timingVariablesExpr)]
+	//fOR [expr.name/]
+[if (not expr.subExpr2.isSimple)]
+	[expr.subExpr2.getName2()/]_duration_Old = [expr.subExpr2.getName2()/]_duration;
+[/if]
+[/for]
+[/if]
+[/let]
+[/template]

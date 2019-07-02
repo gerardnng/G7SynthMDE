@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grafcetModeling:Grafcet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grafcetModeling="http://www.example.org/grafcetModeling" name="safety sss">
+  <connections xsi:type="grafcetModeling:StepToTransition" name="y"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep" name="z"/>
+  <transitions name="(1)" receptivity="a or b and (n>0) or RE(n&lt;0)" inConnections="//@connections.0" outConnections="//@connections.1">
+    <transitionCondition name="(((a or b) and (n > 0)) or (RE (n &lt; 0)))">
+      <subExpr1 name="((a or b) and (n > 0))">
+        <subExpr1 name="(a or b)">
+          <subExpr1 isSimple="true" name="a" variable="//@variables.0"/>
+          <subExpr2 isSimple="true" name="b" variable="//@variables.1"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator"/>
+        </subExpr1>
+        <subExpr2 name="(n > 0)">
+          <subExpr1 type="Arithmetic" isSimple="true" name="n" variable="//@variables.2"/>
+          <subExpr2 type="Arithmetic" isSimple="true" name="0" isConstant="true"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="GT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 name="(RE (n &lt; 0))">
+        <subExpr2 name="(n &lt; 0)">
+          <subExpr1 type="Arithmetic" isSimple="true" name="n" variable="//@variables.2"/>
+          <subExpr2 type="Arithmetic" isSimple="true" name="0" isConstant="true"/>
+          <operator xsi:type="grafcetModeling:LogicalOperator" name="LT"/>
+        </subExpr2>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="RE"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <steps name="1" isInitial="true" inConnections="//@connections.1" outConnections="//@connections.0" variable="//@variables.3"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="a"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="b"/>
+  <variables xsi:type="grafcetModeling:NumericVariable" name="n"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X1" type="Internal"/>
+</grafcetModeling:Grafcet>

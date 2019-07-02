@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grafcetModeling:Grafcet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grafcetModeling="http://www.example.org/grafcetModeling" name="Grafcet de Test NNG">
+  <connections xsi:type="grafcetModeling:StepToTransition"  name="s1 to t"/>
+  <connections xsi:type="grafcetModeling:TransitionToStep"  name="t to s2"/>
+  <transitions  name="t" receptivity="a and b or RE a" inConnections="//@connections.0" outConnections="//@connections.1">
+    <transitionCondition name="((a and b) or (RE a))">
+      <subExpr1 name="(a and b)">
+        <subExpr1 isSimple="true" name="a" variable="//@variables.1"/>
+        <subExpr2 isSimple="true" name="b" variable="//@variables.0"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="AND"/>
+      </subExpr1>
+      <subExpr2 name="(RE a)">
+        <subExpr2 isSimple="true" name="a" variable="//@variables.1"/>
+        <operator xsi:type="grafcetModeling:LogicalOperator" name="RE"/>
+      </subExpr2>
+      <operator xsi:type="grafcetModeling:LogicalOperator"/>
+    </transitionCondition>
+  </transitions>
+  <steps  name="s11" isInitial="true" outConnections="//@connections.0" variable="//@variables.2"/>
+  <steps name="s2" inConnections="//@connections.1" variable="//@variables.3"/>
+  <steps  name="s3" variable="//@variables.4"/>
+  <variables name="b"/>
+  <variables  name="a"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X_s11" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X_s2" type="Internal"/>
+  <variables xsi:type="grafcetModeling:BooleanVariable" name="X_s3" type="Internal"/>
+</grafcetModeling:Grafcet>
